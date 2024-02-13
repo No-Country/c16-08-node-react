@@ -54,7 +54,7 @@ app.use(express.json()); // Analizar solicitudes JSON
 // Rutas
 //app.use("/api", usersRoute);
 
-//Ruta de prueba para verificar el estado del servidor
+//Ruta de prueba para verificar el estado del servidor remoto
 app.get("/health", (req, res) => {
   res.status(200).json({ message: "OK" });
 });
