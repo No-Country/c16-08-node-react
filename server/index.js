@@ -54,10 +54,6 @@ app.use(express.json()); // Analizar solicitudes JSON
 // Rutas
 //app.use("/api", usersRoute);
 
-app.get("/verified", (req, res) => {
-  res.sendFile(path.join(__dirname, "./views/verified.html"));
-});
-
 //Ruta de prueba para verificar el estado del servidor
 app.get("/health", (req, res) => {
   res.status(200).json({ message: "OK" });
