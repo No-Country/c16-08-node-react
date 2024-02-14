@@ -10,9 +10,29 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.10",
+    "@mui/material": "^5.15.10",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.16",
+    "@phosphor-icons/react": "^2.0.15",
+    "@tippyjs/react": "^4.2.6",
+    "axios": "^1.6.7",
+    "Babel": "^0.0.1",
+    "bootbox": "^6.0.0",
+    "bootpag": "^1.0.7",
     "bootstrap": "^5.3.2",
+    "bootstrap-star-rating": "^4.1.2",
+    "dotenv": "^16.4.4",
+    "framer-motion": "^11.0.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-bootstrap-carousel": "^4.1.1",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.50.1",
+    "react-router-dom": "^6.22.0",
+    "react-slick": "^0.30.1",
+    "sass": "^1.70.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",
