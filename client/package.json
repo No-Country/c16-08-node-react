@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@fontsource-variable/montserrat": "^5.0.17",
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "@mui/styled-engine-sc": "^6.0.0-alpha.16",
@@ -32,8 +33,7 @@
     "react-router-dom": "^6.22.0",
     "react-slick": "^0.30.1",
     "sass": "^1.70.0",
-    "slick-carousel": "^1.8.1",
-    "typeface-montserrat": "^1.1.13"
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",
