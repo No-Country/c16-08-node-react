@@ -1,0 +1,49 @@
+ul {
+  display: inline-block;
+  text-align: left;
+}
+
+img {
+  height: auto;
+  flex: 1;
+}
+
+.quiero_trabajar,
+.necesito_servicio {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.quiero_trabajar {
+  margin-top: 50px;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 1068px) {
+  .quiero_trabajar,
+  .necesito_servicio {
+    flex-direction: column;
+  }
+
+  .quiero_trabajar img,
+  .necesito_servicio img {
+    width: 100%;
+    height: auto;
+    margin: 20px auto;
+    order: -1;
+    max-width: 500px;
+  }
+
+  Button {
+    margin: 50px auto;
+  }
+}
+
+@media (min-width: 1069px) {
+  .quiero_trabajar img,
+  .necesito_servicio img {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+  }
+}
