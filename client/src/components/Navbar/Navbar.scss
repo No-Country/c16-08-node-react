@@ -1,4 +1,6 @@
-$background-color: #CED4B7;
+$background-color: #F9F8F6;
+$primary-color:#2C6E49;
+$secondary-color: #da522d;
 
 .navbar {
   padding-right: 2rem;
@@ -34,7 +36,7 @@ $background-color: #CED4B7;
       }
   
       &:hover::after {
-        background-color: #528F14; 
+        background-color: #2C6E49; 
       }
     }
   }
@@ -51,8 +53,14 @@ $background-color: #CED4B7;
   
 
 .custom-btn-color {
-    background-color: #528F14;
+  background-color: $background-color; 
+  color:#2C6E49;
   }
+
+.custom-btn-color:hover {
+  background-color: #2C6E49;
+  color: white; 
+}
 
  .dropdown{
     margin-right: 2rem;
@@ -64,20 +72,20 @@ $background-color: #CED4B7;
 // responsive
   @media screen and (max-width: 767px) {
 
-
   .navbar-toggler{ 
    max-width: 60px;
 
   }
   .navbar-img-toggle{
     display: flex;
+  
  }
  .navbar-brand{
     display: none;
  }
 
  .navbar-nav .nav-item::after {
-    background-color: transparent !important; // Anula el color de fondo en el efecto hover
+    background-color: transparent; // Anula el color de fondo en el efecto hover
   }
   .dropdown{
     max-width: 100px;
