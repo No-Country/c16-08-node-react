@@ -1,10 +1,12 @@
-import "./App.css";
-import Section from './components/Section/Section';
 
 function App() {
-  return <>
-  <Section/>
-  </>;
+
+
+  return (
+    <div>
+     
+    </div>
+  )
 }
 
-export default App;
+export default App
