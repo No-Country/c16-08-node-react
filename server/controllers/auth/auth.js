@@ -1,6 +1,6 @@
-const User = require ("../models/User.js");
+const User = require ("../../models/userModel.js");
 const bcrypt = require ("bcryptjs");
-const { createError } = require ("../utils/error.js");
+const { createError } = require ("../../utils/error.js");
 const jwt = require ("jsonwebtoken");
 
 exports.register = async (req, res, next) => {
