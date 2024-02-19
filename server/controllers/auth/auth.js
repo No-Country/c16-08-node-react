@@ -3,20 +3,21 @@ const bcrypt = require ("bcryptjs");
 const { createError } = require ("../../utils/error.js");
 const jwt = require ("jsonwebtoken");
 
+
 exports.register = async (req, res, next) => {
   try {
-    const { password, confirmPasword, ...userData } = req.body;
+    const { password, confirmPassword, ...userData } = req.body;
 
-    //Verifica si las contraseñas coinciden
-    if (password !== confirmPasword) {
-      return res.status(400).send('Passwords do not match')
+    // Verifica si las contraseñas coinciden
+    if (password !== confirmPassword) {
+      return res.status(400).send('Passwords do not match');
     }
-    
+
     const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password, salt);
+    const hash = bcrypt.hashSync(password, salt);
 
     const newUser = new User({
-      ...req.body,
+      ...userData,
       password: hash,
     });
 
@@ -30,10 +31,10 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   try {
-    console.log('Login request received.');
+    //console.log('Login request received.');
 
     const user = await User.findOne({ email: req.body.email });
-    console.log('User found:', user);
+    //console.log('User found:', user);
 
     if (!user) {
       console.log('User not found.');
@@ -44,7 +45,7 @@ exports.login = async (req, res, next) => {
       req.body.password,
       user.password
     );
-    console.log('Correct password:', isPasswordCorrect);
+    //console.log('Correct password:', isPasswordCorrect);
 
     if (!isPasswordCorrect) {
       console.log('Incorrect password.');
@@ -55,7 +56,7 @@ exports.login = async (req, res, next) => {
       { id: user._id },
       process.env.JWT
     );
-    console.log('Generated token:', token);
+    //console.log('Generated token:', token);
 
     const { password, ...otherDetails } = user._doc;
     res

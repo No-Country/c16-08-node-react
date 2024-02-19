@@ -6,7 +6,7 @@ const cors = require("cors");
 const path = require("path");
 
 // Importar rutas
-//const usersRoute = require("./routes/users");
+const usersRoute = require("./routes/auth/auth");
 
 const app = express();
 dotenv.config(); // Cargar variables de entorno desde .env
@@ -52,7 +52,7 @@ app.use(express.json()); // Analizar solicitudes JSON
 
 
 // Rutas
-//app.use("/api", usersRoute);
+app.use("/api/auth", usersRoute);
 
 //Ruta de prueba para verificar el estado del servidor remoto
 app.get("/health", (req, res) => {
