@@ -5,6 +5,13 @@ const jwt = require ("jsonwebtoken");
 
 exports.register = async (req, res, next) => {
   try {
+    const { password, confirmPasword, ...userData } = req.body;
+
+    //Verifica si las contraseñas coinciden
+    if (password !== confirmPasword) {
+      return res.status(400).send('Passwords do not match')
+    }
+    
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);
 
