@@ -4,9 +4,11 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
+const jwt = require("jsonwebtoken");
 
 // Importar rutas
-//const usersRoute = require("./routes/users");
+const authRoute = require("./routes/auth/auth");
+const usersRoute = require("./routes/users/users");
 
 const app = express();
 dotenv.config(); // Cargar variables de entorno desde .env
@@ -14,9 +16,7 @@ dotenv.config(); // Cargar variables de entorno desde .env
 // Función para conectar a MongoDB
 const connectToMongoDB = async () => {
   try {
-    await mongoose.connect(
-      process.env.MONGODB_URI
-    );
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log("Connected to MongoDB");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
@@ -40,6 +40,24 @@ process.on("SIGINT", async () => {
   }
 });
 
+const secret = process.env.JWT;
+
+app.post("/token", (req, res) => {
+  // Obtener usuario de la base de datos o de alguna fuente confiable
+  const { USER_ID, USER_EMAIL } = process.env;
+
+  const token = jwt.sign(
+    {
+      id: USER_ID,
+      email: USER_EMAIL,
+      exp: Date.now() + 60 * 60 * 1000, // Expira en 1 hora
+    },
+    secret
+  );
+
+  res.send({ token });
+});
+
 // Middleware
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -50,9 +68,9 @@ app.use(cors(corsOptions)); // Configurar CORS
 app.use(cookieParser()); // Analizar cookies
 app.use(express.json()); // Analizar solicitudes JSON
 
-
 // Rutas
-//app.use("/api", usersRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/users", usersRoute);
 
 //Ruta de prueba para verificar el estado del servidor remoto
 app.get("/health", (req, res) => {
