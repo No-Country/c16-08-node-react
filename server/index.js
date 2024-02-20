@@ -58,19 +58,6 @@ app.post("/token", (req, res) => {
   res.send({ token });
 });
 
-
-// Ruta para renovar tokens
-/* app.post('/token', (req, res) => {
-  const refreshToken = req.body.token;
-  if (refreshToken == null) return res.sendStatus(401);
-  if (!refreshToken.includes(refreshToken)) return res.sendStatus(403);
-  jwt.verify(refreshToken, process.env.JWT, (err, user) => {
-    if (err) return res.sendStatus(403);
-    const accessToken = generateAccessToken({ name: user.name });
-    res.json({ accessToken: accessToken });
-  });
-});
- */
 // Middleware
 const corsOptions = {
   origin: "http://localhost:3000",
