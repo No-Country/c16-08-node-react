@@ -60,7 +60,7 @@ app.post("/token", (req, res) => {
 
 // Middleware
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "*",
   methods: "GET,POST,PUT,DELETE",
 };
 
