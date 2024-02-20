@@ -40,27 +40,37 @@ process.on("SIGINT", async () => {
   }
 });
 
-/* const secret = process.env.JWT;
+const secret = process.env.JWT;
 
 app.post("/token", (req, res) => {
-  //Get user from DB
-  const { email, password } = {
-    id: "65d3c72d2f66bfc1c4c5d438",
-    email: "malala@email.com",
-    password: "Malala123",
-  };
+  // Obtener usuario de la base de datos o de alguna fuente confiable
+  const { USER_ID, USER_EMAIL } = process.env;
+
   const token = jwt.sign(
     {
-      id: "65d3c72d2f66bfc1c4c5d438",
-      email: "malala@email.com",
-      password: "Malala123",
-      exp: Date.now() + 60 * 60 * 1000,
+      id: USER_ID,
+      email: USER_EMAIL,
+      exp: Date.now() + 60 * 60 * 1000, // Expira en 1 hora
     },
     secret
   );
-  res.send({ token });
-}); */
 
+  res.send({ token });
+});
+
+
+// Ruta para renovar tokens
+/* app.post('/token', (req, res) => {
+  const refreshToken = req.body.token;
+  if (refreshToken == null) return res.sendStatus(401);
+  if (!refreshToken.includes(refreshToken)) return res.sendStatus(403);
+  jwt.verify(refreshToken, process.env.JWT, (err, user) => {
+    if (err) return res.sendStatus(403);
+    const accessToken = generateAccessToken({ name: user.name });
+    res.json({ accessToken: accessToken });
+  });
+});
+ */
 // Middleware
 const corsOptions = {
   origin: "http://localhost:3000",

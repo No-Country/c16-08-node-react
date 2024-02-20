@@ -1,7 +1,8 @@
 const User = require("../../models/userModel");
 const bcrypt = require("bcryptjs");
 
-//Actualiza los datos de un usuario en la DB.
+
+// Actualiza los datos de un usuario en la DB.
 exports.updateUser = async (req, res, next) => {
   try {
     // Genera el hash del nuevo password
@@ -47,3 +48,4 @@ exports.getUser = async (req, res, next) => {
     next(err);
   }
 };
+
