@@ -4,12 +4,12 @@ const {
   deleteUser,
   getUser
 } = require("../../controllers/user/user");
-const { verifyUser } = require("../../utils/verifyToken");
+const { verifyUser, verifyUserEmail } = require("../../utils/verifyToken");
 
 const router = express.Router();
 
 // UPDATE
-router.put("/:id", verifyUser, updateUser);
+router.put("/:id", verifyUserEmail, updateUser);
 
 // DELETE
 router.delete("/:id", verifyUser, deleteUser);
