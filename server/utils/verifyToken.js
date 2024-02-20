@@ -6,9 +6,9 @@ dotenv.config();
 
 
 // Función para generar un nuevo token de acceso
-function generateAccessToken(user) {
+/* function generateAccessToken(user) {
   return jwt.sign(user, process.env.JWT, { expiresIn: '1h' }); // Ajusta el tiempo de expiración según tus necesidades
-}
+} */
 
 exports.verifyToken = (req, res, next) => {
   const secret = process.env.JWT;
@@ -31,22 +31,22 @@ exports.verifyToken = (req, res, next) => {
   });
 }; 
 
-
 exports.verifyUser = (req, res, next) => {
-  console.log("req.params:", req.params); // Verifica si req.params está definido y qué contiene
+  console.log("req.params:", req.params);
 
-  const userIdFromParams = req.params.id; // Obtener el ID del usuario de req.params
+  const userIdFromParams = req.params.id;
 
   exports.verifyToken(req, res, () => {
     console.log("Verifying user with ID:", userIdFromParams);
 
-    if (req.user && req.user.id === userIdFromParams) {
+    if (req.userId === userIdFromParams) { // Corregido para comparar con req.userId
       next();
     } else {
       return next(createError(403, "You are not authorized."));
     }
   });
 };
+
 
 exports.verifyUserEmail = async (req, res, next) => {
   const { email } = req.body;
