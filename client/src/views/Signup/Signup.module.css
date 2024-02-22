@@ -1,5 +1,5 @@
 .buttonForm {
-    padding: 15px 20px;
+    padding: 10px 20px;
     background-color: #2c6e49;
     color: white;
     border: none;
@@ -7,7 +7,7 @@
     cursor: pointer;
     margin: auto;
     transition: background-color 0.3s ease; 
-    width: 180px;
+    width: 150px;
     margin-bottom: 10px;
   }
   
@@ -27,7 +27,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   .form {
     display: flex;
@@ -60,12 +60,12 @@
 }
 
 
-.noAccountLink{
-color: black;
+.alreadyAccountLink{
+color: var(--secondary-color);
 font-weight: bold;
+margin-left: 5px;
 }
-
 .goBackLink{
-  text-decoration: none;
-  color: var(--secondary-color);
-  }
+text-decoration: none;
+color: var(--secondary-color);
+}
