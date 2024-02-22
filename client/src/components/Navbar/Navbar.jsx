@@ -1,20 +1,14 @@
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import NavbarLogin from "../../views/Login/NavbarLogin";
+
 import { Link } from "react-router-dom";
 
 import "./Navbar";
 
 const Navbar = () => {
-  const { isLogged } = useContext(AuthContext) || {};
-  console.log("isLogged:", isLogged);
-
+ 
   const logoURL =
     "https://res.cloudinary.com/dpxrcotbh/image/upload/v1708131383/zvfs52j0wfoz5s4cizry.png";
 
-  if (isLogged === true) {
-    return <NavbarLogin />;
-  } else {
+  
     return (
       <nav className="navbar navbar-expand-md">
         <div className="container-fluid">
@@ -87,7 +81,7 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuButton"
                 >
-                  <Link to="/signup" className="dropdown-item">
+                  <Link to="/login" className="dropdown-item">
                     Iniciar sesión
                   </Link>
                   <Link to="/signup" className="dropdown-item">
@@ -101,5 +95,5 @@ const Navbar = () => {
       </nav>
     );
   }
-};
+
 export default Navbar;
