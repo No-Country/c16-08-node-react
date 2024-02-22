@@ -1,4 +1,4 @@
-/* import { signInWithPopup, GoogleAuthProvider, getAuth } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, getAuth } from "firebase/auth";
 
 import { app } from "./firebaseGoogleConfig.js";
 
@@ -23,4 +23,3 @@ export const signInWithGoogle = () => {
       });
   });
 };
- */
