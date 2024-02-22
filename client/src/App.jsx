@@ -20,8 +20,7 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<Section />} />
-              {/*               <Route path="/" element={<Footer />} />
-               */}{" "}
+              <Route path="/" element={<Footer />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/service" element={<Services />} />
               {/* 
