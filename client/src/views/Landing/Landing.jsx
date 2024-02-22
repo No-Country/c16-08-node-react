@@ -1,4 +1,4 @@
-import {Navbar, Section, Footer} from '../../components/index.js'
+/* import {Navbar, Section, Footer} from '../../components/index.js'
 
 const Landing = () =>{
   return (
@@ -10,4 +10,4 @@ const Landing = () =>{
   )
 }
 
-export default Landing
+export default Landing */

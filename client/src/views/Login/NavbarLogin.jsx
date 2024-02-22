@@ -1,13 +1,54 @@
 import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import "../Login/loginForm.module.css";
+import Navbar from "../../components/Navbar/Navbar";
+
 
 const NavbarLogin = () => {
-  const { user, isLogged } = useContext(AuthContext) || {};
-  console.log("isLogged:", isLogged);
+  const { user, isLogged, dispatch, setIsLogged } = useContext(AuthContext) || {};
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const logoURL =
     "https://res.cloudinary.com/dpxrcotbh/image/upload/v1708131383/zvfs52j0wfoz5s4cizry.png";
+
+  const navigate = useNavigate();
+
+  const handleUserClick = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      console.log("Cierre de sesión en progreso...");
+      setIsLogged(false); // Utiliza setIsLogged para cambiar el estado isLogged
+      await signOut();
+      console.log("Cierre de sesión exitoso");
+      dispatch({ type: "LOGOUT" });
+      navigate("/");
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (showDropdown && !event.target.closest(".userProfile")) {
+        setShowDropdown(false);
+      }
+    };
+
+    if (showDropdown) {
+      window.addEventListener("click", handleOutsideClick);
+    } else {
+      window.removeEventListener("click", handleOutsideClick);
+    }
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, [showDropdown]);
 
   if (isLogged === true) {
     return (
@@ -43,12 +84,37 @@ const NavbarLogin = () => {
                 alt="logo"
               />
             </Link>
-
-            <ul className="navbar-nav d-flex justify-content-center align-items-center">
-              <li className="nav-item">
-                {user && <span>{user.displayName || user.email}</span>}
-              </li>
-            </ul>
+            {isLogged ? (
+              <div className="userProfile" onClick={handleUserClick}>
+                <div className="userDetails">
+                  {user.photoURL && (
+                    <img
+                      src={user.photoURL}
+                      alt="User Avatar"
+                      className="user-avatar"
+                    />
+                  )}
+                  <ul className="navbar-nav d-flex justify-content-center align-items-center">
+                    <li className="nav-item">
+                      {user && <span>{user.displayName || user.email}</span>}
+                    </li>
+                    {showDropdown && (
+                      <div className="dropdown">
+                        <Link
+                          to="/"
+                          className="logout-button"
+                          onClick={handleSignOut}
+                        >
+                          Log Out
+                        </Link>
+                      </div>
+                    )}
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <Navbar />
+            )}
           </div>
         </div>
       </nav>

@@ -1,116 +1,65 @@
-import { useState } from "react";
-import { Link} from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate} from "react-router-dom";
+import { signInWithGoogle } from "../Login/signInWithGoogle.js";
+import { AuthContext } from "../../context/AuthContext.jsx";
+import { FcGoogle } from "react-icons/fc";
 import styles from "../Signup/Signup.module.css";
-import TextField from "@mui/material/TextField";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import {
-  FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-} from "@mui/material";
+
 
 const Signup = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
+  const { dispatch } = useContext(AuthContext) || {};
+ const navigate = useNavigate();
 
   const logoURL =
     "https://res.cloudinary.com/dpxrcotbh/image/upload/v1708131383/zvfs52j0wfoz5s4cizry.png";
  
+    
+    const handleGoogleLogin = async () => {
+      try {
+        const user = await signInWithGoogle();
+        // Actualiza el estado de autenticación con el nombre de usuario
+        dispatch({
+          type: "LOGIN_SUCCESS",
+          payload: { user },
+        });
+        navigate('/service')
+      } catch (error) {
+        console.error("Error de inicio de sesión con Google:", error);
+      }
+    };
+
   return (
-    <div className={styles.container}>
-      <form className={styles.form}>
+      <div className={styles.container}>
         <div className={styles.logoContainer}>
           <img src={logoURL} width="150" height="150" alt="logo" />
         </div>
-
-        {/* inputs: */}
-        {/* email: */}
-        <div className={styles.inputContainer}>
-          <FormControl sx={{ m: 1, width: "35ch" }} variant="outlined">
-            <TextField id="demo-helper-text-misaligned" label="Email" />
-          </FormControl>
-          {/* contraseña: */}
-          <div className={styles.inputContainer}>
-            <FormControl sx={{ m: 1, width: "35ch" }} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password" fullWidth>
-                Contraseña
-              </InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                type={showPassword ? "text" : "password"}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleTogglePassword}
-                      edge="end"
-                    >
-                      {showPassword ? (
-                        <VisibilityOffIcon />
-                      ) : (
-                        <VisibilityIcon />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Password"
-              />
-            </FormControl>
-          </div>
-          {/* repetir contraseña */}
-          <div className={styles.inputContainer}>
-            <FormControl sx={{ m: 1, width: "35ch" }} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password" fullWidth>
-                Repetir contraseña
-              </InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                type={showPassword ? "text" : "password"}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleTogglePassword}
-                      edge="end"
-                    >
-                      {showPassword ? (
-                        <VisibilityOffIcon />
-                      ) : (
-                        <VisibilityIcon />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Repeat-Password"
-              />
-            </FormControl>
-          </div>
-        </div>
-        {/* boton: */}
+  
+        {/* Botón para iniciar sesión con Google */}
         <div className={styles.buttonContainer}>
-          <button className={styles.buttonForm} type="submit">
-            Registrarme
+        <div className="social-login-container">
+          <button className="btnGoogle" onClick={handleGoogleLogin}>
+            <FcGoogle className="google-icon" />
           </button>
+          <div>
+          Regístrate o Inicia sesión con Google
+          </div>
         </div>
-
-        <p className={styles.alreadyAccount}>
+        </div>
+  
+        {/* Mensaje de tener cuenta y enlace a la página de inicio de sesión */}
+      {/*   <p className={styles.alreadyAccount}>
           ¿Ya tienes cuenta?
           <Link className={styles.alreadyAccountLink} to="/login">
             Iniciá sesión
           </Link>
-        </p>
+        </p> */}
+  
+       {/*  {/* Enlace a la página de inicio
         <Link className={styles.goBackLink} to='/'>
           Inicio
-        </Link>
-      </form>
-    </div>
-  );
+        </Link> */}
+      </div>
+    );
 };
 
 export default Signup;

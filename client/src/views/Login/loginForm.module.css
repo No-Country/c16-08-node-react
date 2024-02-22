@@ -1,0 +1,315 @@
+/* LoginForm./* css */
+
+.login-form-container {
+  width: 350px;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: small;
+  font-family: Arial, sans-serif;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 2rem;
+}
+
+.form-input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #006CE4;
+  border-radius: 4px;
+  width: 94%;
+}
+
+.password-input-wrapper {
+  position: relative;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-left: -10px;
+  border-radius: 4px;
+  width: 95%;
+}
+
+.password-input-wrapper input {
+  width: calc(120% - 40px);
+  /* Restar el ancho del icono de ojo */
+  background-color: #E8F0FE;
+}
+
+.toggle-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 1.5px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+
+.form-button {
+  padding: 10px;
+  background-color: #006CE4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 94%;
+  height: 2.5rem;
+  font-size: medium;
+  font-weight: 500;
+}
+
+.form-p {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Estilos para el contenedor del texto y la línea */
+p {
+  text-align: center;
+  /* Alinea el texto al centro */
+}
+
+.d-line {
+  margin-top: 1rem;
+
+}
+
+.divider-line {
+  display: inline-block;
+  width: 20%;
+  ;
+  /* Ajusta el ancho de la línea según tus preferencias */
+  border-bottom: 1px solid #E7E7E7;
+  /* Puedes cambiar el color de la línea aquí */
+  margin: 5px 10px;
+  /* Ajusta el margen para separar la línea del texto */
+}
+
+
+
+
+.social-login-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  margin-bottom: 20px;
+  align-items: center !important;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.btnGoogle {
+  background-color: #ffffff;
+  color: #757575;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 15px 15px;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  margin: 20px 0 5px 115px;
+}
+
+.btnGoogle:hover {
+  border-color: #006CE4;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #bdbbbb;
+  border-radius: 4px;
+  margin-right: 10px;
+  background-color: transparent;
+}
+
+.icon-container-fb {
+  margin-left: 5rem;
+  margin-bottom: 3rem;
+  background-color: transparent;
+
+  width: 10px;
+  /* Tamaño del ícono */
+  height: 10px;
+  /* Tamaño del ícono */
+}
+
+.icon-container-g {
+  margin-left: 5rem;
+  margin-bottom: 3rem;
+
+  border-color: #003580;
+  width: 10px;
+  /* Tamaño del ícono */
+  height: 10px;
+  /* Tamaño del ícono */
+}
+
+.fbIcon {
+  color: #3b5998;
+  /* Color azul de Facebook */
+  width: 24px;
+  /* Tamaño del ícono */
+  height: 24px;
+  /* Tamaño del ícono */
+}
+
+/* Estilo para el ícono de Google */
+.gIcon {
+  width: 30px;
+  /* Tamaño del ícono */
+  height: 30px;
+  /* Tamaño del ícono */
+}
+
+a {
+  color: #4267B2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p:last-child {
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+
+/*NavBarLogin*/
+.navbar {
+  height: 4.3rem;
+  background-color: #003580;
+  display: flex;
+  justify-content: center;
+}
+
+.navContainer {
+  width: 100%;
+  max-width: 1024px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 700;
+}
+
+
+
+
+.btnFacebook {
+  background-color: #ffffff;
+  color: #4267B2;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 15px 15px;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+  margin: 5px 0 5px 25px;
+
+}
+
+.btnFacebook:hover {
+  border-color: #006CE4;
+}
+
+.d-line-2 {
+  margin-top: 1rem;
+
+}
+
+.divider-line-2 {
+  display: inline-block;
+  width: 100%;
+  /* Ajusta el ancho de la línea según tus preferencias */
+  border-bottom: 1px solid #E7E7E7;
+  /* Puedes cambiar el color de la línea aquí */
+  margin: 10px 10px;
+  /* Ajusta el margen para separar la línea del texto */
+}
+
+
+/* login */
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lInput {
+  height: 30px;
+  padding: 10px;
+}
+
+.lButton {
+  border: none;
+  padding: 10px 20px;
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.lButton:disabled {
+  background-color: #0071c28c;
+  cursor: not-allowed;
+}
+
+.userProfile {
+  color: #ffffff;
+  font-size: small;
+  text-align: end;
+  margin-top: 1rem;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  /* Posiciona el menú desplegable debajo del nombre de usuario */
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+}
+
+.logout-button {
+  margin-top: 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

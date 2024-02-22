@@ -1,7 +1,9 @@
-import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
-import NavbarLogin from "../Login/NavbarLogin";
+import { AuthContext } from "../../context/AuthContext";
+import NavbarLogin from "../../views/Login/NavbarLogin";
 import { Link } from "react-router-dom";
+
+import "./Navbar";
 
 const Navbar = () => {
   const { isLogged } = useContext(AuthContext) || {};
@@ -85,10 +87,10 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuButton"
                 >
-                  <Link to="/login" className="dropdown-item">
+                  <Link to="/signup" className="dropdown-item">
                     Iniciar sesión
                   </Link>
-                  <Link to="/register" className="dropdown-item">
+                  <Link to="/signup" className="dropdown-item">
                     Registrarse
                   </Link>
                 </div>

@@ -1,5 +1,4 @@
-<<<<<<< HEAD:client/src/components/Login/Login.jsx
-import axios from "axios";
+/* import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -41,7 +40,7 @@ const Login = () => {
     }
    
   }
- */
+ 
   return (
     <>
       <div className="login">
@@ -65,11 +64,11 @@ const Login = () => {
           </button>
           {error && <span>{error.message}</span>}
           {/*         <button onClick={handleLogOut}>Log out</button>
-           */}{" "}
+          {" "}
         </div>
       </div>
     </>
-=======
+//=======
 import { useState } from "react";
 import { Link} from "react-router-dom";
 import styles from "../Login/Login.module.css";
@@ -102,13 +101,13 @@ const Login = () => {
         <div className={styles.logoContainer}>
           <img src={logoURL} width="150" height="150" alt="logo" />
         </div>
-        {/* inputs */}
-        {/* email: */}
+        {/* inputs 
+        {/* email: 
         <div className={styles.inputContainer}>
           <FormControl sx={{ m: 1, width: "35ch" }} variant="outlined">
             <TextField id="demo-helper-text-misaligned" label="Email" />
           </FormControl>
-          {/* contraseña */}
+          {/* contraseña 
           <div className={styles.inputContainer}>
             <FormControl sx={{ m: 1, width: "35ch" }} variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password" fullWidth>
@@ -162,8 +161,9 @@ const Login = () => {
         </Link>
       </form>
     </div>
->>>>>>> 012ca5a93e599fbb8eabff81195c738f91780d8d:client/src/views/Login/Login.jsx
+//>>>>>>> 012ca5a93e599fbb8eabff81195c738f91780d8d:client/src/views/Login/Login.jsx
   );
 };
 
 export default Login;
+ */
