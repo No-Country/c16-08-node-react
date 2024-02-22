@@ -1,9 +1,10 @@
-/* import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { app } from "./firebaseGoogleConfig";
 
 export const AuthContext = React.createContext(null); // Cambio del valor predeterminado
 
+// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState(null); // Cambio del valor predeterminado
 
@@ -23,4 +24,3 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={authState}>{children}</AuthContext.Provider>
   );
 };
- */

@@ -1,13 +1,12 @@
-import {Navbar, Section, Footer} from '../../components/index.js'
+import { Navbar, Section, Footer } from "../../components/index.js";
 
-const Landing = () =>{
+const Landing = () => {
   return (
     <div>
-        <Navbar/>
-        <Section/>
-        <Footer/>
+      <Navbar />
+      <Section />
+      <Footer />
     </div>
-  )
-}
-
-export default Landing
+  );
+};
+export default Landing;

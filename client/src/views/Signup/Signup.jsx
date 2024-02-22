@@ -21,7 +21,7 @@ const Signup = () => {
 
   const logoURL =
     "https://res.cloudinary.com/dpxrcotbh/image/upload/v1708131383/zvfs52j0wfoz5s4cizry.png";
- 
+
   return (
     <div className={styles.container}>
       <form className={styles.form}>
