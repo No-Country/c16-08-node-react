@@ -1,0 +1,71 @@
+.buttonForm {
+    padding: 15px 20px;
+    background-color: #2c6e49;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: auto;
+    transition: background-color 0.3s ease; 
+    width: 180px;
+    margin-bottom: 10px;
+  }
+  
+  .buttonForm:hover {
+    background-color: #3d865c; 
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh; 
+    background-color: #2c6e49;
+  }
+  .buttonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px; 
+    background-color: var(--background-color);
+    border-radius: 10px;
+    gap: 1rem;
+    padding: 20px;
+  }
+  
+  .logoContainer {
+    margin-bottom: 20px; 
+  }
+  
+  .inputContainer .MuiTextField-root {
+    width: 100%;
+  }
+  
+  .forgotPassword a{    
+  color: var(--secondary-color)
+
+ 
+  }
+  
+.forgotPassword{
+    margin-top: 8px; 
+    text-align: right;
+}
+
+
+.noAccountLink{
+color: black;
+font-weight: bold;
+}
+
+.goBackLink{
+  text-decoration: none;
+  color: var(--secondary-color);
+  }
