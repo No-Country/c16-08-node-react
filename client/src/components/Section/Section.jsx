@@ -37,16 +37,16 @@ export default function Section() {
         />
         <div style={{ flex: 1 }}>
           <div className={classes.content}>
-            <h2>¡Quiero trabajar!</h2>
+            <h2>¿Estás buscando un trabajo extra?</h2>
             <ul>
-              <li>There goes the last great American dynasty</li>
-              <li>Who knows if she never showed up, what could have been</li>
+              <li>Regístrate en <span className={classes.orangeText}>EmpleosÁgil</span></li>
+              <li>totalmente gratis y busca el trabajo </li>
               <li>
-                There goes the most shameless woman this town has ever seen
+                que se adapte a tus horarios
               </li>
-              <li>She had a marvelous time ruining everything</li>
+             
             </ul>
-            <Button>Ofrecerme</Button>
+            <Button>Explora</Button>
           </div>
         </div>
       </div>
@@ -54,16 +54,16 @@ export default function Section() {
       <div className={classes.quiero_trabajar}>
         <div style={{ flex: 1 }}>
           <div className={classes.content}>
-            <h2>¡Necesito un servicio!</h2>
+            <h2>¿Tienes servicios para ofrecer?</h2>
             <ul>
-              <li>There goes the last great American dynasty</li>
-              <li>Who knows if she never showed up, what could have been</li>
+              <li>Conecta con potenciales clientes</li>
+              <li>publicando tu anuncio en cuestión</li>
               <li>
-                There goes the most shameless woman this town has ever seen
+                de minutos
               </li>
-              <li>She had a marvelous time ruining everything</li>
+             
             </ul>
-            <Button>Buscar</Button>
+            <Button>Publica un anuncio</Button>
           </div>
         </div>
         <img
