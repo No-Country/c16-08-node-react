@@ -1,0 +1,112 @@
+.buttonForm {
+    padding: 10px 20px;
+    background-color: #2c6e49;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: auto;
+    transition: background-color 0.3s ease; 
+    width: 150px;
+    margin-bottom: 10px;
+  }
+  
+  .buttonForm:hover {
+    background-color: #3d865c; 
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh; 
+    background-color: #2c6e49;
+  }
+  .buttonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px; 
+    background-color: var(--background-color);
+    border-radius: 10px;
+    gap: 1rem;
+    padding: 20px;
+  }
+  
+  .logoContainer {
+    margin-bottom: 20px; 
+  }
+  
+  .inputContainer .MuiTextField-root {
+    width: 100%;
+  }
+  
+  .forgotPassword a{    
+  color: var(--secondary-color)
+
+ 
+  }
+  
+.forgotPassword{
+    margin-top: 8px; 
+    text-align: right;
+}
+
+
+.alreadyAccountLink{
+color: var(--secondary-color);
+font-weight: bold;
+margin-left: 5px;
+}
+.goBackLink{
+text-decoration: none;
+color: var(--secondary-color);
+}
+
+
+.social-login-container {
+  display: flex;
+  justify-content:space-between;
+  margin-top: 3rem;
+  margin-bottom: 20px;
+  align-items: center !important;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.btnGoogle {
+  background-color: #ffffff;
+  color:  #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 15px 15px;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  margin: 20px 0 5px  115px;
+}
+
+.btnGoogle:hover {
+  border-color: #006CE4;
+}
+.icon-container-g {
+  margin-left: 5rem;
+  margin-bottom: 3rem;
+
+  border-color:#003580;
+  width: 10px; /* Tamaño del ícono */
+  height: 10px; /* Tamaño del ícono */
+}
+
+.gIcon {
+  width: 30px; /* Tamaño del ícono */
+  height: 30px; /* Tamaño del ícono */
+}

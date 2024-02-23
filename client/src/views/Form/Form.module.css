@@ -1,0 +1,65 @@
+.dropzoneStyle {
+    border: 2px dashed #cccccc;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
+  /* .mainContainer{
+    background-color: var(--background-color);
+    
+  } */
+
+.submitBtn {
+    padding: 15px 20px;
+    background-color: #2c6e49;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: auto;
+    transition: background-color 0.3s ease; 
+    width: 100px;
+  }
+
+ .submitBtn:hover {
+    background-color: #3d865c; 
+  }
+ 
+  .clearBtn{
+    padding: 15px 20px;
+    background-color: #ec5353;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: auto;
+    transition: background-color 0.3s ease; 
+    width: 100px;
+    margin-left: 2rem;
+  }
+  .clearBtn:hover {
+    background-color: #b81414; 
+  }
+ 
+.btnContainer{
+    margin-top: 2rem;
+}
+
+.boldLabel {
+    font-weight:600;
+  }
+
+  .warning{
+    color: var(--secondary-color);
+  }
+
+  .formTitle {
+    margin-bottom: 4rem;
+  }
+  
+.caretDown{
+ text-align: right;
+}
