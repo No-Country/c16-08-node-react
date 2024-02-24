@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import styles from "./Form.module.css";
 import {useForm} from 'react-hook-form'
-import {PHONE_CHECKED} from '../../../../server/utils/regex.js'
+import {PHONE_CHECKED, STRING_CHECKED} from '../../../../server/utils/regex.js'
 
 const Form = () => {
   // logica para el arrastrar y soltar de imagenes
@@ -107,7 +107,15 @@ const handleDescriptionChange = (event) => {
             cols="50"
             rows="5"
             maxLength={descriptionMaxLength}
-            {...register("description", { required: true })}
+            {...register("description", { required: true,
+              minLength: {
+                value:5,
+                message:'Debe ingresar más de 5 caracteres'
+              },
+              maxLength: {
+                value:50,
+                message: 'Debe ingresar un máximo de 1000 caracteres'
+              },})}
             onChange={handleDescriptionChange} 
           ></textarea>
          <p style={{ fontSize: "13px" }}>
@@ -115,7 +123,7 @@ const handleDescriptionChange = (event) => {
           </p>
           {errors.description && (
             <p style={{ color: "red", fontSize: "13px" }}>
-              Debe ingresar una descripción
+              {errors.description.message}
             </p>
           )}
         </div>
@@ -198,11 +206,16 @@ const handleDescriptionChange = (event) => {
             name="province"
             className="form-control shadow-sm "
             {...register('province',{
-              required:true
+              required:true,
+              pattern: {
+                value: STRING_CHECKED,
+                message: 'Solo se permiten letras y/o espacios'
+              }
             })}
           />
-           {errors.province && <p style={{ color: 'red', fontSize: '13px'}}>Debe ingresar la provincia</p>}
+           {errors.province && <p style={{ color: 'red', fontSize: '13px'}}>{errors.province.message}</p>}
         </div>
+
 {/* ciudad */}
         <div className="mb-3">
           <label htmlFor="country" className="form-label">
@@ -213,10 +226,14 @@ const handleDescriptionChange = (event) => {
             name="city"
             className="form-control shadow-sm "
             {...register('city',{
-              required:true
+            required:true,
+            pattern: {
+              value: STRING_CHECKED,
+              message: 'Solo se permiten letras y/o espacios'
+            }
             })}
             />
-           {errors.city && <p style={{ color: 'red', fontSize: '13px'}}>Debe ingresar una ciudad</p>}  
+           {errors.city && <p style={{ color: 'red', fontSize: '13px'}}>{errors.city.message}</p>}  
         </div>
 
 {/* telefono */}
@@ -232,6 +249,10 @@ const handleDescriptionChange = (event) => {
       pattern: {
         value: PHONE_CHECKED,
         message: 'Solo se permiten números o estos símbolos: (),+,-'
+      },
+      minLength: {
+        value: 8,
+        message: 'El número de teléfono debe tener al menos 8 caracteres'
       }
     })}
   />
