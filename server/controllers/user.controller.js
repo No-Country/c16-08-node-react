@@ -52,10 +52,17 @@ import { request } from "express";
 
 export const register = async (request, response) => {
   try {
-    const reqBody = await request.json();
-    const { email, password } = reqBody;
+    const { email, password } = request.body;
 
-    console.log(reqBody)
+    console.log(email, password)
 
-  } catch (error) {}
+    response.json({
+        menssage:"info ok"
+    })
+
+  } catch (error) {
+    return response.json(
+      { error: error.menssage },
+      { status: 500 })
+  }
 };
