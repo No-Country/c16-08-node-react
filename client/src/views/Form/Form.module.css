@@ -7,10 +7,10 @@
     cursor: pointer;
   }
 
-  .mainContainer{
+  /* .mainContainer{
     background-color: var(--background-color);
     
-  }
+  } */
 
 .submitBtn {
     padding: 15px 20px;
@@ -60,3 +60,6 @@
     margin-bottom: 4rem;
   }
   
+.caretDown{
+ text-align: right;
+}
