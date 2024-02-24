@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "esbuild src/index.js --bundle --outfile=dist/bundle.js --loader:.js=jsx",
+    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "build:sass": "sass src/main.scss build/styles/styles.css"
