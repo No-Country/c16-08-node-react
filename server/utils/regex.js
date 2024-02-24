@@ -18,9 +18,5 @@ export const EMAIL_CHECKED = /^[a-zA-Z0-9._%+-]+@(?:hotmail|gmail|yahoo)\.(?:com
 
 //valida que contenga solo números o los simbolos (), + o -
 export const PHONE_CHECKED = /^[0-9()+\- ]*[0-9][0-9()+\- ]*$/
-
-
-
-
 //valida que solo contenga letras y espacios
 export const STRING_CHECKED = /^[a-zA-Z\s]+$/

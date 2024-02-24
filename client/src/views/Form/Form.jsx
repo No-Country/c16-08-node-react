@@ -107,7 +107,12 @@ const handleDescriptionChange = (event) => {
             cols="50"
             rows="5"
             maxLength={descriptionMaxLength}
-            {...register("description", { required: true,
+            {...register("description", { 
+              required:{
+                value:true,
+                message: 'Debe ingresar una descripción'
+              },
+
               minLength: {
                 value:5,
                 message:'Debe ingresar más de 5 caracteres'
@@ -206,7 +211,10 @@ const handleDescriptionChange = (event) => {
             name="province"
             className="form-control shadow-sm "
             {...register('province',{
-              required:true,
+              required:{
+                value:true,
+                message: 'Debe ingresar un valor para provincia'
+              },
               pattern: {
                 value: STRING_CHECKED,
                 message: 'Solo se permiten letras y/o espacios'
@@ -226,7 +234,10 @@ const handleDescriptionChange = (event) => {
             name="city"
             className="form-control shadow-sm "
             {...register('city',{
-            required:true,
+              required:{
+                value:true,
+                message: 'Debe ingresar un valor para ciudad'
+              },
             pattern: {
               value: STRING_CHECKED,
               message: 'Solo se permiten letras y/o espacios'
