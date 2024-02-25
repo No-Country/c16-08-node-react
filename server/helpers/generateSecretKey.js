@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+import crypto from "crypto"
 
 // Generar una clave secreta aleatoria de 64 bytes (512 bits)
 const generateSecretKey = () => {
@@ -6,4 +6,6 @@ const generateSecretKey = () => {
 };
 
 const secretKey = generateSecretKey();
-console.log(secretKey);
+
+
+export default secretKey

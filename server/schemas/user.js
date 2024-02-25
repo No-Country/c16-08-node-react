@@ -3,17 +3,17 @@ import { z } from "zod";
 export const registerSchema = z.object({
   email: z
     .string({
-      required_error: "Email is required",
+      required_error: "El correo electrónico es obligatorio",
     })
     .email({
-      message: "Email is not valid",
+      message: "El correo electrónico no es válido",
     }),
   password: z
     .string({
-      required_error: "Password is required",
+      required_error: "Se requiere contraseña",
     })
     .min(6, {
-      message: "Password must be at least 6 characters",
+      message: "La contraseña debe tener al menos 6 caracteres",
     }),
 });
 
