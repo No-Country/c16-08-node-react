@@ -6,6 +6,7 @@ import Signup from "./views/Signup/Signup";
 import Login from "./views/Login/Login";
 import Landing from "./views/Landing/Landing";
 import Form from '../src/views/Form/Form'
+import Explore from "./views/Explore/Explore";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/publicar" element={<Form />} />
+              <Route path="/explora" element={<Explore />} />
             </Routes>
   
          
