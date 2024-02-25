@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
@@ -19,8 +19,8 @@ app.use(cookieParser());
 
 app.use("/api/users", userRoute);
 
-app.get("/", (req, res) => {
-  res.send("Welcome to our API...");
+app.get("/", (request, response) => {
+  response.send("Bienvenido...");
 });
 
 export default app
