@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import styles from "./Form.module.css";
 import {useForm} from 'react-hook-form'
-import {PHONE_CHECKED, STRING_CHECKED} from '../../../../server/utils/regex.js'
 
 const Form = () => {
   // logica para el arrastrar y soltar de imagenes
@@ -216,7 +215,7 @@ const handleDescriptionChange = (event) => {
                 message: 'Debe ingresar un valor para provincia'
               },
               pattern: {
-                value: STRING_CHECKED,
+                value:/^[a-zA-Z\s]+$/ ,
                 message: 'Solo se permiten letras y/o espacios'
               }
             })}
@@ -239,7 +238,7 @@ const handleDescriptionChange = (event) => {
                 message: 'Debe ingresar un valor para ciudad'
               },
             pattern: {
-              value: STRING_CHECKED,
+              value: /^[a-zA-Z\s]+$/,
               message: 'Solo se permiten letras y/o espacios'
             }
             })}
@@ -258,7 +257,7 @@ const handleDescriptionChange = (event) => {
     className="form-control shadow-sm"
     {...register('phone', {
       pattern: {
-        value: PHONE_CHECKED,
+        value: /^[0-9()+\- ]*[0-9][0-9()+\- ]*$/,
         message: 'Solo se permiten números o estos símbolos: (),+,-'
       },
       minLength: {
