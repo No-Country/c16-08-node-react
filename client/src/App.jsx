@@ -2,11 +2,7 @@ import { AuthProvider } from "../src/views/Login/AuthProvider";
 import { AuthContextProvider } from "./context/AuthContext";
 import { FormProvider } from "./context/FormContext";
 import { Routes, Route } from "react-router-dom";
-import Signup from "./views/Signup/Signup";
-import Login from "./views/Login/Login";
-import Landing from "./views/Landing/Landing";
-import Form from '../src/views/Form/Form'
-import Explore from "./views/Explore/Explore";
+import {About, Landing,Login,Signup, Explore, Form} from "../src/views/index.js"
 
 
 function App() {
@@ -21,6 +17,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/publicar" element={<Form />} />
               <Route path="/explora" element={<Explore />} />
+              <Route path="/acerca" element={<About />} />
             </Routes>
   
          

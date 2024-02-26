@@ -34,7 +34,7 @@ const Form = () => {
 const  {register,handleSubmit,  getValues , formState:{errors}} = useForm()
 console.log(errors)
 
-const descriptionMaxLength = 1000;
+const descriptionMaxLength = 300;
 const titleMaxLength = 50;
 
 const handleTitleChange = (event) => {
@@ -117,8 +117,8 @@ const handleDescriptionChange = (event) => {
                 message:'Debe ingresar más de 5 caracteres'
               },
               maxLength: {
-                value:50,
-                message: 'Debe ingresar un máximo de 1000 caracteres'
+                value:300,
+                message: 'Debe ingresar un máximo de 300 caracteres'
               },})}
             onChange={handleDescriptionChange} 
           ></textarea>
