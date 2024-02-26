@@ -1,0 +1,87 @@
+Registro de Usuario (register):
+Descripción: Este controlador maneja las solicitudes de registro de usuarios. Verifica la disponibilidad del correo electrónico proporcionado y, si es único, crea un hash de la contraseña y guarda un nuevo usuario en la base de datos. También envía un correo electrónico de verificación.
+
+Ruta: POST http://localhost:5000/api/users/register
+Ejemplo de solicitud:
+
+json
+
+{
+  "email": "ejemplo@gmail.com",
+  "password": "contraseña123"
+}
+Respuesta de ejemplo:
+json
+
+{
+  "message": "Usuario creado correctamente",
+  "success": true,
+  "savedUser": {
+    "email": "ejemplo@gmail.com",
+    "password": "$2a$10$RGtOB.6JkgTG1zdJNcGt5eCXhDBci8N3CmtVEA.80IPiPeq/ReVVO",
+    "isVerfied": false,
+    "_id": "65daaf3cd7f35060494f9ca6",
+    "__v": 0
+  }
+}
+
+Inicio de Sesión (login):
+Descripción: Este controlador maneja las solicitudes de inicio de sesión de usuarios. Verifica las credenciales del usuario y, si son válidas, crea un token de acceso y lo establece como una cookie en la respuesta.
+
+Ruta: POST http://localhost:5000/api/users/login
+
+Ejemplo de solicitud:
+json
+
+{
+  "email": "ejemplo@gmail.com",
+  "password": "contraseña123"
+}
+
+Respuesta de ejemplo:
+json
+
+{
+  "message": "Inicio de sesión correcto",
+  "success": true
+}
+
+Cierre de Sesión (logout):
+Descripción: Este controlador maneja las solicitudes de cierre de sesión de usuarios. Elimina la cookie de token establecida anteriormente y devuelve un mensaje de éxito.
+
+Ruta: POST http://localhost:5000/api/users/logout
+Respuesta de ejemplo:
+json
+
+{
+  "message": "Cierre de sesión exitoso",
+  "success": true
+}
+
+Verificación de Correo Electrónico y Restablecimiento de Contraseña (verifyEmail):
+Descripción: Este controlador maneja las solicitudes de verificación de correo electrónico y restablecimiento de contraseña. Si se proporciona un correo electrónico, envía un correo electrónico de restablecimiento de contraseña. Si se proporciona un token, verifica y actualiza el estado de verificación del correo electrónico o realiza un restablecimiento de contraseña según corresponda.
+
+Ruta: POST http://localhost:5000/api/users/verifyEmail
+Ejemplo de solicitud para correo electrónico de verificación:
+json
+
+{
+  "email": "ejemplo@gmail.com"
+}
+Respuesta de ejemplo si el correo no existe:
+json
+
+{
+  "message": "El correo no existe"
+}
+Respuesta de ejemplo si el correo existe y se envía el correo de verificación:
+json
+
+{
+  "message": "Correo enviado",
+  "success": true
+}
+Restablecimiento de Contraseña (forgotPassword):
+Descripción: Este controlador maneja las solicitudes de restablecimiento de contraseña. Verifica si el token proporcionado es válido, actualiza la contraseña del usuario y elimina el token de restablecimiento de contraseña.
+
+Ruta: POST http://localhost:5000/api/users/forgotPassword
