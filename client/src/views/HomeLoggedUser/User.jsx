@@ -12,7 +12,7 @@ const User = (props) => {
         mt: 2,
         flexDirection: { xs: "column", md: "row" },
         zIndex: -1,
-        m: { xs: 5 },
+        m: { xs: 5, md:3 },
       }}
     >
       <Avatar
