@@ -31,7 +31,7 @@ export const register = async (request, response) => {
 
     await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
 
-    return response.json({
+    return response.status(201).json({
       message: "Usuario creado correctamente",
       success: true,
       savedUser,
