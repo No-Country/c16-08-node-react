@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./footer.module.css";
 
 const Footer = () => {
@@ -29,21 +30,22 @@ const Footer = () => {
       
       <div className={styles.extraContainer}>
         <ul>
-          <li>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              ¿Quiénes somos?
-            </a>
-          </li>
-          <li>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              Preguntas frecuentes
-            </a>
-          </li>
-          <li>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              Soporte
-            </a>
-          </li>
+
+        <li>
+       <Link to="/acerca">
+       ¿Quiénes somos?
+       </Link>
+</li>
+<li>
+   <Link to="/Faq">
+    Preguntas frecuentes
+  </Link>
+</li>
+<li>
+  <a href="#" target="_blank" rel="noopener noreferrer">
+    Soporte
+  </a>
+</li>
         </ul>
       </div>
     </footer>
