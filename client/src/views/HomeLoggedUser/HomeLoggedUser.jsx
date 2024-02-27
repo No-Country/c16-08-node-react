@@ -11,6 +11,7 @@ const theme = createTheme({
   backgroundColor: "#F9F8F6",
 });
 
+// eslint-disable-next-line react/prop-types
 const CustomOutlinedButton = ({ children }) => (
   <Button
     variant="outlined"
@@ -44,7 +45,8 @@ const HomeLoggedUser = () => {
             variant="h1"
             sx={{ pt: 4, fontSize: "30px", fontWeight: "bold" }}
           >
-            ¡Hola, Daniela!
+            {/* aca va a el nombre de usuario, debe ser dinamico */}
+            ¡Hola, Daniela! 
           </Typography>
           <Typography variant="h3" sx={{ fontSize: "20px", mt: 2 }}>
             ¿Por donde quieres empezar?
