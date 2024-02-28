@@ -1,89 +1,90 @@
-
 .footerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    background-color: var(--primary-color);
-    padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .infoContainer {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--primary-color); 
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color);
 }
 
 .extraContainer {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--primary-color); 
-    color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  color: var(--background-color);
 }
 
 .imgFooter {
-    margin-right: auto; 
-    margin-left: 1.3rem;
+  margin-right: auto;
+  margin-left: 1.3rem;
 }
 
 .listFooter {
-    color: var(--background-color);
+  color: var(--background-color);
 }
 
 .socialFooter {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
-.extraContainer a{
-    color: var(--background-color);
-    text-decoration: none;
-    cursor: pointer;
+.extraContainer a {
+  color: var(--background-color);
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.infoContainer a{
-    color: var(--background-color);
-    text-decoration: none;
-    cursor: pointer;
+.infoContainer a {
+  color: var(--background-color);
+  text-decoration: none;
+  cursor: pointer;
 }
 /* responsive */
 @media screen and (max-width: 767px) {
-    .footerContainer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--primary-color);
-        padding: 20px;
-        flex-direction: column; 
-        gap: 2rem;
-    }
+  .footerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    padding: 20px;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-    .imgFooter {
-        max-width: 110px;
-        margin-left: 1.7rem; 
-    }
+  .imgFooter {
+    max-width: 110px;
+    margin-left: 1.7rem;
+  }
 
-    .infoContainer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center; 
-        align-items: center;
-        background-color: var(--primary-color);
-    }
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+  }
 
-    .extraContainer {
-        font-size: 14px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; 
-        align-items: center; 
-         background-color: var(--primary-color);
-        color: var(--background-color);
-    }
+  .extraContainer {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+  }
 
-    .extraContainer ul{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    }
+  .extraContainer ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
 }
-
