@@ -2,7 +2,7 @@ import { AuthProvider } from "../src/views/Login/AuthProvider";
 import { AuthContextProvider } from "./context/AuthContext";
 import { FormProvider } from "./context/FormContext";
 import { Routes, Route } from "react-router-dom";
-import {About, Landing,Login,Signup, Explore, Form} from "../src/views/index.js"
+import {About, Landing,Login,Signup, Explore, Form, Faq} from "../src/views/index.js"
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
               <Route path="/publicar" element={<Form />} />
               <Route path="/explora" element={<Explore />} />
               <Route path="/acerca" element={<About />} />
+              <Route path="/Faq" element={<Faq />} />
             </Routes>
   
          
