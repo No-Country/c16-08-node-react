@@ -104,7 +104,7 @@ const handleDescriptionChange = (event) => {
             name="description"
             className="form-control shadow-sm"
             cols="50"
-            rows="5"
+            rows="8"
             maxLength={descriptionMaxLength}
             {...register("description", { 
               required:{
