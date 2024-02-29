@@ -14,10 +14,11 @@
 }
 
 .textContainer {
-    margin-top: 15rem;
+    margin-top: 10rem;
 
   }
   
+
   @media screen and (max-width: 767px) {
     .row {
     display: flex;

@@ -6,5 +6,6 @@ import Login from "./Login/Login.jsx";
 import Signup from "./Signup/Signup.jsx";
 import ProfileForm from "./ProfileForm/ProfileForm.jsx";
 import HomeLoggedUser from "./HomeLoggedUser/HomeLoggedUser.jsx"
+import Faq from "./FAQ/Faq.jsx"
 
-export { About, Explore, Form, Landing, Login, Signup, HomeLoggedUser, ProfileForm};
+export { About, Explore, Form, Landing, Login, Signup, HomeLoggedUser, ProfileForm, Faq};
