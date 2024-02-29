@@ -23,12 +23,14 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { registerSchema } from "../../schemas/auth.js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import { MdDataSaverOff } from "react-icons/md";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [allFieldsFilled, setAllFieldsFilled] = useState(false);
-  const { signup, isAuthenticated, loading } = useAuth();
+  const { signup, isAuthenticated, loadingButton} = useAuth();
+ 
 
   const {
     register,
@@ -215,9 +217,10 @@ const Signup = () => {
             size="large"
             color="success"
             variant="contained"
-            loading={loading}
+            loading={loadingButton}
             loadingPosition="start"
             disabled={validateButton()}
+            startIcon={loadingButton?<MdDataSaverOff />:" "}
             sx={{
               textTransform: "capitalize",
               bgcolor: "#2c6e49",
@@ -227,7 +230,7 @@ const Signup = () => {
               },
             }}
           >
-            {loading ? <span>Cargando</span> : <span>Registrarme</span>}
+            {loadingButton ? <span>Cargando</span> : <span>Registrarme</span>}
           </LoadingButton>
         </div>
 
