@@ -83,7 +83,7 @@ const Navbar = () => {
                   <Link to="/login" className="dropdown-item">
                     Iniciar sesión
                   </Link>
-                  <Link to="/signup" className="dropdown-item">
+                  <Link to="/register" className="dropdown-item">
                     Registrarse
                   </Link>
                 </div>
