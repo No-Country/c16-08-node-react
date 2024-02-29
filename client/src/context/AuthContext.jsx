@@ -1,81 +1,100 @@
-import { createContext, useEffect, useReducer } from "react";
-import PropTypes from 'prop-types'
+import { createContext, useContext, useState, useEffect } from "react";
+import { loginRequest, registerRequest, verifyTokenRequest } from "../helpers/apiRoutes";
+import Cookies from "js-cookie";
 
+const AuthContext = createContext();
 
-const INITIAL_STATE = {
-  user: null,
-  loading: false,
-  isLogged: false,
-  error: null,
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) throw new Error("useAuth must be used within a AuthProvider");
+  return context;
 };
 
-const AuthReducer = (state, action) => {
-  switch (action.type) {
-    case "LOGIN_START":
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      };
-    case "LOGIN_SUCCESS":
-      return {
-        ...state,
-        user: action.payload.user,
-        isLogged: true,
-        loading: false,
-        error: null,
-      };
-    case "LOGIN_FAILURE":
-      return {
-        /*         user: null,*/
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-    case "LOGOUT":
-      localStorage.removeItem("token"); // Elimina el token del almacenamiento local al cerrar sesión
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-      return {
-        ...INITIAL_STATE, // Restaura el estado inicial al cerrar sesión
-
-        user: null,
-
-        isLogged: false,
-        loading: false,
-        loginMethod: null, // Restablecer loginMethod al cerrar sesión
-        error: null,
-      };
-    case "SET_IS_LOGGED":
-      return {
-        ...state,
-        isLogged: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-export const AuthContext = createContext();
-
-// Proveedor del contexto
-export const AuthContextProvider = ( {children} ) => {
-  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
-
-   const setIsLogged = (value) => {
-    dispatch({ type: 'SET_IS_LOGGED', payload: value });
-   };
-  
+  // clear errors after 5 seconds
   useEffect(() => {
-    // Actualiza el valor de isLogged en localStorage
-    localStorage.setItem("isLogged", state.isLogged);
-  }, [state.isLogged]);
+    if (errors.length > 0) {
+      const timer = setTimeout(() => {
+        setErrors([]);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [errors]);
+
+  const signup = async (user) => {
+    try {
+      const res = await registerRequest(user);
+      if (res.status === 200) {
+        setUser(res.data);
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      console.log(error.response.data);
+      setErrors(error.response.data.message);
+    }
+  };
+
+  const signin = async (user) => {
+    try {
+      const res = await loginRequest(user);
+      setUser(res.data);
+      setIsAuthenticated(true);
+    } catch (error) {
+      console.log(error);
+      setErrors(error.response.data.message);
+    }
+  };
+
+  const logout = () => {
+    Cookies.remove("token");
+    setUser(null);
+    setIsAuthenticated(false);
+  };
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      const cookies = Cookies.get();
+      if (!cookies.token) {
+        setIsAuthenticated(false);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const res = await verifyTokenRequest(cookies.token);
+        console.log(res);
+        if (!res.data) return setIsAuthenticated(false);
+        setIsAuthenticated(true);
+        setUser(res.data);
+        setLoading(false);
+      } catch (error) {
+        setIsAuthenticated(false);
+        setLoading(false);
+      }
+    };
+    checkLogin();
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ ...state, dispatch, setIsLogged }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        signup,
+        signin,
+        logout,
+        isAuthenticated,
+        errors,
+        loading,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
-AuthContextProvider.propTypes = {
-  children: PropTypes.any.isRequired,
-}
+export default AuthContext;
