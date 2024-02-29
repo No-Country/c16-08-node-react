@@ -4,6 +4,8 @@ import Form from "./Form/Form.jsx";
 import Landing from "./Landing/Landing.jsx";
 import Login from "./Login/Login.jsx";
 import Signup from "./Signup/Signup.jsx";
-import Faq from './FAQ/Faq.jsx'
+import ProfileForm from "./ProfileForm/ProfileForm.jsx";
+import HomeLoggedUser from "./HomeLoggedUser/HomeLoggedUser.jsx"
+import Faq from "./FAQ/Faq.jsx"
 
-export { About, Explore, Form, Landing, Login, Signup, Faq };
+export { About, Explore, Form, Landing, Login, Signup, HomeLoggedUser, ProfileForm, Faq};
