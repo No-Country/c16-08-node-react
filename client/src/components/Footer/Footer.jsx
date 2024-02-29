@@ -41,11 +41,7 @@ const Footer = () => {
     Preguntas frecuentes
   </Link>
 </li>
-<li>
-  <a href="#" target="_blank" rel="noopener noreferrer">
-    Soporte
-  </a>
-</li>
+
         </ul>
       </div>
     </footer>
