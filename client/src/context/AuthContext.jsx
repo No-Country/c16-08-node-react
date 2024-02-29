@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { loginRequest, registerRequest, verifyTokenRequest } from "../helpers/apiRoutes";
+import { loginRequest, registerRequest, verifyTokenRequest } from "../api/auth";
 import Cookies from "js-cookie";
+import toast, { Toaster } from "react-hot-toast";
 
 const AuthContext = createContext();
 
@@ -13,40 +14,33 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // clear errors after 5 seconds
-  useEffect(() => {
-    if (errors.length > 0) {
-      const timer = setTimeout(() => {
-        setErrors([]);
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [errors]);
+  const [success, setSuccess] = useState(null);
 
   const signup = async (user) => {
     try {
-      const res = await registerRequest(user);
-      if (res.status === 200) {
-        setUser(res.data);
+      const response = await registerRequest(user);
+      toast.success(response.data.message);
+      if (response.status === 201) {
+        setUser(response.data);
         setIsAuthenticated(true);
+        setLoading(false);
       }
     } catch (error) {
-      console.log(error.response.data);
-      setErrors(error.response.data.message);
+      toast.error(error.response.data.message);
+    } finally {
+      setLoading(true);
     }
   };
 
   const signin = async (user) => {
     try {
-      const res = await loginRequest(user);
-      setUser(res.data);
+      const response = await loginRequest(user);
+      toast.success(response.data.message);
+      setUser(response.data);
       setIsAuthenticated(true);
     } catch (error) {
-      console.log(error);
-      setErrors(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -56,29 +50,32 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
   };
 
-  useEffect(() => {
-    const checkLogin = async () => {
-      const cookies = Cookies.get();
-      if (!cookies.token) {
-        setIsAuthenticated(false);
-        setLoading(false);
-        return;
-      }
+  // useEffect(() => {
+  //   const checkLogin = async () => {
+  //     const cookies = Cookies.get();
+  //     console.log(!cookies.token);
+  //     if (!cookies.token) {
+  //       setIsAuthenticated(false);
+  //       setLoading(false);
+  //     }
 
-      try {
-        const res = await verifyTokenRequest(cookies.token);
-        console.log(res);
-        if (!res.data) return setIsAuthenticated(false);
-        setIsAuthenticated(true);
-        setUser(res.data);
-        setLoading(false);
-      } catch (error) {
-        setIsAuthenticated(false);
-        setLoading(false);
-      }
-    };
-    checkLogin();
-  }, []);
+  //     try {
+  //       console.log("entro")
+  //       const res = await verifyTokenRequest(cookies.token);
+  //       console.log(!res.data);
+  //       if (!res.data) return setIsAuthenticated(false);
+  //       setIsAuthenticated(true);
+  //       setUser(res.data);
+  //       setLoading(false);
+        
+  //     } catch (error) {
+  //       setIsAuthenticated(false);
+  //       setLoading(false);
+  //       console.log("salgo")
+  //     }
+  //   };
+  //   checkLogin();
+  // }, []);
 
   return (
     <AuthContext.Provider
@@ -88,7 +85,6 @@ export const AuthProvider = ({ children }) => {
         signin,
         logout,
         isAuthenticated,
-        errors,
         loading,
       }}
     >

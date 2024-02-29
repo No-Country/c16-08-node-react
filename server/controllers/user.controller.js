@@ -66,7 +66,7 @@ export const login = async (request, response) => {
 
     const tokenData = {
       id: user._id,
-      email: user.email,
+      username: user.username,
     };
 
     // Creo un Token
