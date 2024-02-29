@@ -5,7 +5,7 @@ import { createAccessToken } from "../helpers/accessToken.js";
 
 export const register = async (request, response) => {
   try {
-    const { email, password } = request.body;
+    const {username, email, password } = request.body;
 
     //check if user already exists
     const user = await User.findOne({ email });
@@ -22,6 +22,7 @@ export const register = async (request, response) => {
 
     // Create new user
     const newUSer = new User({
+      username,
       email,
       password: hashedPassword,
     });
