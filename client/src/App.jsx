@@ -1,16 +1,17 @@
-import { AuthProvider } from "../src/views/Login/AuthProvider";
+
+import { AuthProvider } from "../src/context/AuthContext.jsx";
 import { AuthContextProvider } from "./context/AuthContext";
 import { FormProvider } from "./context/FormContext";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import {About, Landing,Login,Signup, Explore, Form, HomeLoggedUser, ProfileForm, Faq} from "../src/views/index.js"
-
+// import { ProtectedRoute } from "../route.js";
 
 
 function App() {
   return (
-    <AuthContextProvider>
-      <FormProvider>
-        <AuthProvider>
+   <AuthProvider>
+      <BrowserRouter>
+        <Routes>
           
             <Routes>
               <Route path="/" element={<Landing />} />
@@ -22,12 +23,16 @@ function App() {
               <Route path="/inicio" element={<HomeLoggedUser />} />
               <Route path="/perfil" element={<ProfileForm />} />
               <Route path="/Faq" element={<Faq />} />
+                 {/* <Route element={<ProtectedRoute />}>
+            <Route path="/publicar" element={<Form />} />
+          </Route> */}
             </Routes>
   
          
-        </AuthProvider>
-      </FormProvider>
-    </AuthContextProvider>
+           </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+
   );
 }
 
