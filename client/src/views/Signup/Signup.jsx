@@ -23,12 +23,12 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { registerSchema } from "../../schemas/auth.js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [allFieldsFilled, setAllFieldsFilled] = useState(false);
-  const { signup, errors: registerErrors, isAuthenticated } = useAuth();
+  const { signup, isAuthenticated, loading } = useAuth();
 
   const {
     register,
@@ -45,18 +45,17 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (value) => {
-       await signup(value);
+    await signup(value);
   };
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/HomeLoggedUser");
+    if (isAuthenticated) navigate("/inicio");
   }, [isAuthenticated]);
 
   useEffect(() => {
     const checkFieldsFilled = () => {
       const values = getValues();
-      const validate = (value) =>
-        value.length >= 3;
+      const validate = (value) => value.length >= 3;
       const areAllFieldsFilled = Object.values(values).every(validate);
 
       setAllFieldsFilled(areAllFieldsFilled);
@@ -66,25 +65,23 @@ const Signup = () => {
   }, [getStateForm]);
 
   const validateButton = () => {
-    if(!isValid && ( submitCount === 0 && allFieldsFilled)) return false
-    if(isValid && (allFieldsFilled && submitCount >= 1)) return false
-    if(isValid && submitCount === 0) return false
-    return true
-  }
+    if (!isValid && submitCount === 0 && allFieldsFilled) return false;
+    if (isValid && allFieldsFilled && submitCount >= 1) return false;
+    if (isValid && submitCount === 0) return false;
+    return true;
+  };
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-
 
   const logoURL =
     "https://res.cloudinary.com/dpxrcotbh/image/upload/v1708131383/zvfs52j0wfoz5s4cizry.png";
 
   return (
     <div className={styles.container}>
-      {registerErrors.map((error, i) => {
-        return <span key={i}>{error}</span>;
-      })}
+     
+      <Toaster position="bottom-right" reverseOrder={false} />
       <Box
         component="form"
         noValidate
@@ -110,7 +107,6 @@ const Signup = () => {
                 {...register("username", { required: true })}
                 error={!!errors.username?.message}
                 color="success"
-                                
               />
               {errors.username?.message && (
                 <FormHelperText error>
@@ -126,10 +122,9 @@ const Signup = () => {
                 name="email"
                 label="Correo Electrónico"
                 autoComplete="Correo Electrónico"
-                {...register("email" , { required: true })}
+                {...register("email", { required: true })}
                 error={!!errors.email?.message}
                 color="success"
-                                
               />
               {errors.email?.message && (
                 <FormHelperText error>{errors.email?.message}</FormHelperText>
@@ -149,7 +144,6 @@ const Signup = () => {
                   id="password"
                   name="password"
                   autoComplete="new-password"
-                  
                   color="success"
                   label="Contraseña"
                   {...register("password", { required: true })}
@@ -222,7 +216,7 @@ const Signup = () => {
             color="success"
             variant="contained"
             loading={loading}
-            // loadingPosition="start"
+            loadingPosition="start"
             disabled={validateButton()}
             sx={{
               textTransform: "capitalize",
