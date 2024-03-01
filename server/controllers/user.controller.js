@@ -2,6 +2,8 @@ import User from "../Database/models/userModel.js";
 import bcryptjs from "bcryptjs";
 import sendEmail from "../helpers/mailer.js";
 import { createAccessToken } from "../helpers/accessToken.js";
+import jwt from "jsonwebtoken";
+import { JWT_SECRET_KEY } from "../config.js";
 
 export const register = async (request, response) => {
   try {
@@ -179,4 +181,23 @@ export const forgotPassword = async (request, response) => {
   } catch (error) {
     return response.status(500).json({ message: error.message });
   }
+};
+export const verifyToken = async (resquest, response) => {
+  const { token } = resquest.cookies;
+  if (!token) return response.send(false);
+
+  jwt.verify(token, JWT_SECRET_KEY, async (error, user) => {
+    if (error) return response.sendStatus(401);
+
+    console.log(user)
+    const userFound = await User.findById(user.id);
+    console.log(userFound)
+    if (!userFound) return response.sendStatus(401);
+
+    return response.json({
+      id: userFound._id,
+      username: userFound.username,
+      email: userFound.email,
+    });
+  });
 };
