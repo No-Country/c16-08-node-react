@@ -6,16 +6,26 @@ const userprofileSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    description: {
+    lastname: {
+      type: String,
+      required: true,
+    },
+    email: {
       type: String,
     },
-    validation: {
-      type: Number, 
+    age: {
+      type: Number,
     },
-    commentsQuantity: {
-      type: Number, 
+    province: {
+      type: String,
     },
-    photoProfile: {
+    city: {
+      type: String,
+    },
+    personalDescription: {
+      type: String,
+    },
+    img: {
       type: String,
     },
   },

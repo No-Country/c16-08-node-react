@@ -14,11 +14,12 @@ margin-bottom: 1rem;
   padding: 85px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra los elementos horizontalmente */
+  align-items: center; 
+  margin-top: 5rem;
 }
 
 .imageContainer img {
-  margin-bottom: 20px; /* Ajusta el espacio entre la imagen y el botón */
+  margin-bottom: 20px; 
 }
 
 .uploadBtn {
@@ -57,10 +58,10 @@ cursor: pointer;
   display: inline-block;
   cursor: pointer;
   padding: 10px;
-  background-color: var(--primary-color); /* Color de fondo del botón */
-  color: white; /* Color de texto del botón */
-  border-radius: 4px; /* Bordes redondeados */
-  transition: background-color 0.3s, color 0.3s; /* Transición suave */
+  background-color: var(--primary-color); 
+  color: white; 
+  border-radius: 4px; 
+  transition: background-color 0.3s, color 0.3s; 
 }
 
 .uploadBtn:hover {
