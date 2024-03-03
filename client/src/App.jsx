@@ -11,7 +11,7 @@ import {
   ProfileForm,
   Faq,
 } from "../src/views/index.js";
-import { ProtectedRoute } from "./route.jsx";
+import ProtectedRoute from "./route.jsx";
 function App() {
   return (
     <AuthProvider>
@@ -24,9 +24,9 @@ function App() {
           <Route path="/Faq" element={<Faq />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/inicio" element={<HomeLoggedUser />} />
-            <Route path="/publicar" element={<Form />} />
+            {/* <Route path="/publicar" element={<Form />} />
             <Route path="/explora" element={<Explore />} />
-            <Route path="/perfil" element={<ProfileForm />} />
+            <Route path="/perfil" element={<ProfileForm />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>

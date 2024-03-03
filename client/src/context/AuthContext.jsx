@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { loginRequest, registerRequest, verifyTokenRequest } from "../api/auth";
+import { loginRequest, registerRequest, verifyTokenRequest, logoutRequest } from "../api/auth";
 import Cookies from "js-cookie";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const AuthContext = createContext();
 
@@ -47,25 +47,27 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
-    Cookies.remove("token");
-    setUser(null);
-    setIsAuthenticated(false);
-  };
-
+  const logout = async () => {
+    try {
+      const response = await logoutRequest()
+      setUser(null);
+      setIsAuthenticated(false);
+  
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+    
+  }
   useEffect(() => {
     const checkLogin = async () => {
       const cookies = Cookies.get();
-      console.log(!cookies.token);
       if (!cookies.token) {
         setIsAuthenticated(false);
         setLoading(false);
       }
 
       try {
-        console.log("token");
         const res = await verifyTokenRequest(cookies.token);
-        console.log(!res.data);
         if (!res.data) return setIsAuthenticated(false);
         setIsAuthenticated(true);
         setUser(res.data);
@@ -73,7 +75,6 @@ export const AuthProvider = ({ children }) => {
       } catch (error) {
         setIsAuthenticated(false);
         setLoading(false);
-        console.log("error de token");
       }
     };
     checkLogin();

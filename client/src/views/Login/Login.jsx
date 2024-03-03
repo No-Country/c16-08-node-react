@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "../Login/Login.module.css";
 import TextField from "@mui/material/TextField";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -35,10 +35,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    
-    console.log(data)
-    signin(data)
-  
+    signin(data);
   };
 
   useEffect(() => {
@@ -56,25 +53,32 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
-       <Toaster position="bottom-right" reverseOrder={false} />
+      <Toaster position="bottom-right" reverseOrder={false} />
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <Avatar sx={{ m: 1, bgcolor: "#2c6e49", width: 120, height: 120 }}>
-            <img src={logoURL} width="100" height="100" alt="logo" />
-          </Avatar>
+        <Avatar sx={{ m: 1, bgcolor: "#2c6e49", width: 120, height: 120 }}>
+          <img src={logoURL} width="100" height="100" alt="logo" />
+        </Avatar>
 
         <div className={styles.inputContainer}>
           <FormControl sx={{ m: 1, width: "30ch" }} variant="outlined">
-            <TextField id="demo-helper-text-misaligned" label="Email" name="email" {...register("email")}/>
+            <TextField
+              id="demo-helper-text-misaligned"
+              label="Email"
+              name="email"
+              autoComplete="username"
+              {...register("email")}
+            />
           </FormControl>
 
           <div className={styles.inputContainer}>
             <FormControl sx={{ m: 1, width: "30ch" }} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password" fullWidth>
+              <InputLabel htmlFor="outlined-adornment-password" >
                 Contraseña
               </InputLabel>
               <OutlinedInput
                 id="outlined-adornment-password"
                 name="password"
+                autoComplete="current-password"
                 {...register("password")}
                 type={showPassword ? "text" : "password"}
                 endAdornment={
