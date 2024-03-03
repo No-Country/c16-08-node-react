@@ -15,8 +15,8 @@ const router = Router();
 router.post("/register", validateSchema(registerSchema), register);
 router.post("/login", validateSchema(loginSchema), login);
 router.post("/verify-email", verifyEmail);
-router.post("/logout", verifyToken, logout);
+router.post("/logout", logout);
 router.patch("/forgotPassword", forgotPassword);
-router.patch("/verify", verifyToken);
+router.get("/verify", verifyToken);
 
 export default router;

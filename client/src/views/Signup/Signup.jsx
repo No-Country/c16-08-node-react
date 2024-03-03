@@ -51,7 +51,7 @@ const Signup = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/inicio");
+    if (isAuthenticated) navigate("/login");
   }, [isAuthenticated]);
 
   useEffect(() => {
