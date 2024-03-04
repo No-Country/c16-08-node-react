@@ -10,6 +10,7 @@ const theme = createTheme({
   },
   backgroundColor: "#F9F8F6",
 });
+import { useAuth } from "../../context/AuthContext";
 
 // eslint-disable-next-line react/prop-types
 const CustomOutlinedButton = ({ children, url }) => {
@@ -40,6 +41,8 @@ const CustomOutlinedButton = ({ children, url }) => {
 };
 
 const HomeLoggedUser = () => {
+  const { user, isAuthenticated } = useAuth();
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ m: { xs: 0, md: 5 } }}>
@@ -49,7 +52,8 @@ const HomeLoggedUser = () => {
             sx={{ pt: 4, fontSize: "30px", fontWeight: "bold" }}
           >
             {/* aca va a el nombre de usuario, debe ser dinamico */}
-            ¡Hola, Daniela!
+            {`¡ Hola, ${user.username} ! `}
+            
           </Typography>
           <Typography variant="h3" sx={{ fontSize: "20px", mt: 2 }}>
             ¿Por donde quieres empezar?
