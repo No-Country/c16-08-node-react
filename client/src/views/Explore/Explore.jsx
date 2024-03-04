@@ -1,4 +1,4 @@
-import { Searchbar } from "../../components";
+import { Footer, Navbar, Searchbar } from "../../components";
 import style from "./Explore.module.css";
 
 const Explore = () => {
@@ -48,6 +48,7 @@ const Explore = () => {
 
   return (
     <>
+      <Navbar />
       <div className={style.titleContainer}>
         <h3 className={style.exploreTitle}>
           Explora todas las ofertas laborales y servicios disponibles cerca de
@@ -55,7 +56,7 @@ const Explore = () => {
         </h3>
       </div>
 
-      <div className="container">
+      <div className="container" style={{ paddingBottom: "100px" }}>
         <Searchbar />
         <p className={style.categorySubtitle}> Categorías de servicios</p>
         <div className="row">
@@ -75,6 +76,7 @@ const Explore = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 };
