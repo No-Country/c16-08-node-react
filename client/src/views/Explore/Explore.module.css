@@ -1,76 +1,61 @@
 .categoryContainer {
-    position: relative;
-  }
-  
-  .categoryOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .categoryContainer:hover .categoryOverlay {
-    opacity: 1;
-  }
-  
-  .categoryName {
-    color: white; 
-    font-size: 18px; 
-    text-align: center;
-    font-weight: 600;
-  }
+  position: relative;
+}
 
-  .titleContainer{
-    width: 100%;
-    background-color: var(--secondary-green);
-    margin-bottom: 2rem;
-  }
-  
-  .exploreTitle{
+.categoryOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.categoryContainer:hover .categoryOverlay {
+  opacity: 1;
+}
+
+.categoryName {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.titleContainer {
+  width: 100%;
+  background-color: var(--secondary-green);
+  margin-bottom: 2rem;
+}
+
+.exploreTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 15px;
+  margin-left: 80px;
+}
+
+.categorySubtitle {
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 767px) {
+  .exploreTitle {
     font-size: 1rem;
     font-weight: 600;
     padding: 15px;
-    margin-left: 80px; 
+    margin: 0 auto;
+    text-align: center;
+    max-width: 90%;
   }
 
-  .categorySubtitle{
-    font-weight: 600;
-    margin-top: 2rem;
-  }
-
-  @media screen and (max-width: 767px) {
-    .exploreTitle {
-        font-size: 1rem; 
-        font-weight: 600;
-        padding: 15px;
-        margin: 0 auto; 
-        text-align: center; 
-        max-width: 90%; 
-      }
-      
-    categoryContainer {
-        overflow: hidden;
-      }
-    
-      .categoryOverlay {
-        opacity: 1;
-      }
-    
-      .categoryName {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      categoryContainer {
+  categoryContainer {
     overflow: hidden;
   }
 
@@ -84,4 +69,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .categoryContainer {
+    overflow: hidden;
   }
+
+  .categoryOverlay {
+    opacity: 1;
+  }
+
+  .categoryName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
