@@ -1,10 +1,13 @@
 /* feature/armado-y-ensamblado */
 .footerContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    background-color: var(--primary-color);
-    padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .infoContainer {
