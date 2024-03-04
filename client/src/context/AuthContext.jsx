@@ -1,81 +1,100 @@
-import { createContext, useEffect, useReducer } from "react";
-import PropTypes from 'prop-types'
+import { createContext, useContext, useState, useEffect } from "react";
+import { loginRequest, registerRequest, verifyTokenRequest, logoutRequest } from "../api/auth";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
+const AuthContext = createContext();
 
-const INITIAL_STATE = {
-  user: null,
-  loading: false,
-  isLogged: false,
-  error: null,
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) throw new Error("useAuth must be used within a AuthProvider");
+  return context;
 };
 
-const AuthReducer = (state, action) => {
-  switch (action.type) {
-    case "LOGIN_START":
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      };
-    case "LOGIN_SUCCESS":
-      return {
-        ...state,
-        user: action.payload.user,
-        isLogged: true,
-        loading: false,
-        error: null,
-      };
-    case "LOGIN_FAILURE":
-      return {
-        /*         user: null,*/
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-    case "LOGOUT":
-      localStorage.removeItem("token"); // Elimina el token del almacenamiento local al cerrar sesión
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loadingButton, setLoadingButton] = useState(false);
 
-      return {
-        ...INITIAL_STATE, // Restaura el estado inicial al cerrar sesión
+  const signup = async (user) => {
+    try {
+      setLoadingButton(true);
+      const response = await registerRequest(user);
+      toast.success(response.data.message);
+      if (response.status === 201) {
+        setUser(response.data);
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    } finally {
+      setLoadingButton(false);
+    }
+  };
 
-        user: null,
+  const signin = async (user) => {
+    try {
+      setLoadingButton(true);
+      const response = await loginRequest(user);
+      toast.success(response.data.message);
+      setUser(response.data);
+      setIsAuthenticated(true);
+    } catch (error) {
+      toast.error(error.response.data.message);
+    } finally {
+      setLoadingButton(false);
+    }
+  };
 
-        isLogged: false,
-        loading: false,
-        loginMethod: null, // Restablecer loginMethod al cerrar sesión
-        error: null,
-      };
-    case "SET_IS_LOGGED":
-      return {
-        ...state,
-        isLogged: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-export const AuthContext = createContext();
-
-// Proveedor del contexto
-export const AuthContextProvider = ( {children} ) => {
-  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
-
-   const setIsLogged = (value) => {
-    dispatch({ type: 'SET_IS_LOGGED', payload: value });
-   };
+  const logout = async () => {
+    try {
+      const response = await logoutRequest()
+      setUser(null);
+      setIsAuthenticated(false);
   
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+    
+  }
   useEffect(() => {
-    // Actualiza el valor de isLogged en localStorage
-    localStorage.setItem("isLogged", state.isLogged);
-  }, [state.isLogged]);
+    const checkLogin = async () => {
+      const cookies = Cookies.get();
+      if (!cookies.token) {
+        setIsAuthenticated(false);
+        setLoading(false);
+      }
+
+      try {
+        const res = await verifyTokenRequest(cookies.token);
+        if (!res.data) return setIsAuthenticated(false);
+        setIsAuthenticated(true);
+        setUser(res.data);
+        setLoading(false);
+      } catch (error) {
+        setIsAuthenticated(false);
+        setLoading(false);
+      }
+    };
+    checkLogin();
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ ...state, dispatch, setIsLogged }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        signup,
+        signin,
+        logout,
+        isAuthenticated,
+        loading,
+        loadingButton,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
-AuthContextProvider.propTypes = {
-  children: PropTypes.any.isRequired,
-}
+export default AuthContext;

@@ -1,0 +1,38 @@
+.aboutTitle{
+  font-style: italic;
+}
+
+.blueText{
+    color: var(--blue-color);
+    font-weight: 600;
+    
+}
+
+.orangeText{
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.textContainer {
+    margin-top: 10rem;
+
+  }
+  
+
+  @media screen and (max-width: 767px) {
+    .row {
+    display: flex;
+    flex-direction: column;
+  }
+    .col-md-6 {
+        width: 100%;
+      }
+
+    .textContainer{
+        margin-top: 2rem;
+    }
+
+    .imgContainer{
+        margin-top: 2rem;
+    }
+      }

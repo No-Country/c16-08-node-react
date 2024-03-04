@@ -4,9 +4,19 @@
   --background-color: #F9F8F6;
   --primary-color: #2C6E49;
   --secondary-color: #da522d;
+  --secondary-green:#E2E1D2;
+  --blue-color:#2A6B84;
+
 }
 
 * {
   font-family: 'Montserrat', sans-serif;
 
+}
+
+body {
+  position: relative;
+  padding-bottom: 100px;
+  min-height: 100vh;
+  margin-top: auto; 
 }

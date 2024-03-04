@@ -2,10 +2,12 @@ import User from "../Database/models/userModel.js";
 import bcryptjs from "bcryptjs";
 import sendEmail from "../helpers/mailer.js";
 import { createAccessToken } from "../helpers/accessToken.js";
+import jwt from "jsonwebtoken";
+import { JWT_SECRET_KEY } from "../config.js";
 
 export const register = async (request, response) => {
   try {
-    const { email, password } = request.body;
+    const { username, email, password } = request.body;
 
     //check if user already exists
     const user = await User.findOne({ email });
@@ -22,6 +24,7 @@ export const register = async (request, response) => {
 
     // Create new user
     const newUSer = new User({
+      username,
       email,
       password: hashedPassword,
     });
@@ -65,7 +68,7 @@ export const login = async (request, response) => {
 
     const tokenData = {
       id: user._id,
-      email: user.email,
+      username: user.username,
     };
 
     // Creo un Token
@@ -93,7 +96,7 @@ export const logout = async (request, response) => {
   try {
     response.cookie("token", "", { httpOnly: true, expires: new Date(0) });
 
-    return response.json({ message: "Cierre de sesión con éxito", success: true });
+    return response.sendStatus(200);
   } catch (error) {
     return response.status(500).json({ error: error.message });
   }
@@ -178,4 +181,23 @@ export const forgotPassword = async (request, response) => {
   } catch (error) {
     return response.status(500).json({ message: error.message });
   }
+};
+export const verifyToken = async (resquest, response) => {
+  const { token } = resquest.cookies;
+  console.log(token);
+  if (!token) return response.send(false);
+
+  jwt.verify(token, JWT_SECRET_KEY, async (error, user) => {
+    if (error) return response.sendStatus(401);
+
+    const userFound = await User.findById(user.id);
+
+    if (!userFound) return response.sendStatus(401);
+
+    return response.json({
+      id: userFound._id,
+      username: userFound.username,
+      email: userFound.email,
+    });
+  });
 };
