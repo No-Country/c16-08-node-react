@@ -1,8 +1,8 @@
-import express, { response } from "express";
+import express  from "express";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
-import { FRONTEND_URL } from "./config.js";
+
 import userRoute from "./routes/userRoute.js"
 
 const app = express();
@@ -10,7 +10,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: FRONTEND_URL,
+    origin: process.env.FRONTEND_URL,
   })
 );
 app.use(express.json());
