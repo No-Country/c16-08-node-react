@@ -11,11 +11,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { isAuthenticated, logout } = useAuth();
-
+  const navigation = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleCloseUserMenu = () => {
@@ -28,6 +28,9 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
+  };
+  const handlePerfil = () => {
+    navigation("/perfil");
   };
   const logoURL =
     "https://res.cloudinary.com/dpxrcotbh/image/upload/v1708131383/zvfs52j0wfoz5s4cizry.png";
@@ -68,13 +71,15 @@ const Navbar = () => {
 
           <ul className="navbar-nav d-flex justify-content-center align-items-center">
             <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/inicio"
-              >
-                Inicio
-              </Link>
+              {isAuthenticated ? (
+                <Link className="nav-link active" aria-current="page" to="/inicio">
+                  Inicio
+                </Link>
+              ) : (
+                <Link className="nav-link active" aria-current="page" to="/">
+                  Inicio
+                </Link>
+              )}
             </li>
 
             <li className="nav-item">
@@ -88,14 +93,20 @@ const Navbar = () => {
                 Explora
               </Link>
             </li>
+
             {isAuthenticated ? (
               <>
+                <li className="nav-item">
+                  <Link className="nav-link active" to="/mis-anuncios">
+                    Mis anuncios
+                  </Link>
+                </li>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
                       alt="usuario"
                       src="/avatar.svg"
-                      sx={{ width: 30, height: 30,}}
+                      sx={{ width: 30, height: 30 }}
                     />
                   </IconButton>
                 </Tooltip>
@@ -117,6 +128,9 @@ const Navbar = () => {
                 >
                   <MenuItem onClick={handleLogout}>
                     <Typography textAlign="center">Cerrar sesión</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handlePerfil}>
+                    <Typography textAlign="center">Perfil</Typography>
                   </MenuItem>
                 </Menu>
               </>

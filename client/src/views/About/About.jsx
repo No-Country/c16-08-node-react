@@ -1,4 +1,3 @@
-import { Footer, Navbar } from '../../components'
 import style from './About.module.css'
 
 const About = () => {
@@ -7,7 +6,7 @@ const About = () => {
   return (
  
     <div className={style.mainContainer}>
-          <Navbar />
+         
           <div className="container">
               <div className="row">
                   <div className="col-md-6">
@@ -36,7 +35,7 @@ const About = () => {
               </div>
 
           </div>
-          <Footer />
+          
       </div>
   )
 }

@@ -72,7 +72,7 @@ const Login = () => {
 
           <div className={styles.inputContainer}>
             <FormControl sx={{ m: 1, width: "30ch" }} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password" >
+              <InputLabel htmlFor="outlined-adornment-password">
                 Contraseña
               </InputLabel>
               <OutlinedInput
@@ -112,7 +112,7 @@ const Login = () => {
             Ingresar
           </button>
 
-          <GoogleSVG />
+          {/* <GoogleSVG /> */}
         </div>
         <p className={styles.noAccount}>
           ¿Aún o tienes cuenta?{" "}
@@ -121,6 +121,9 @@ const Login = () => {
             Regístrate ahora
           </Link>
         </p>
+        <Link className={styles.goBackLink} to="/">
+          Inicio
+        </Link>
       </form>
     </div>
   );

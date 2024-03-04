@@ -1,8 +1,8 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Footer, Navbar } from "../../components";
 import UsersList from "./UsersList";
 
 import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
   typography: {
@@ -10,43 +10,50 @@ const theme = createTheme({
   },
   backgroundColor: "#F9F8F6",
 });
+import { useAuth } from "../../context/AuthContext";
 
 // eslint-disable-next-line react/prop-types
-const CustomOutlinedButton = ({ children }) => (
-  <Button
-    variant="outlined"
-    sx={{
-      color: "white",
-      borderColor: "white",
-      fontSize: "0.9rem",
-      textTransform: "none",
-      borderRadius: 2,
-      minWidth: { xs: 120, md: "unset" },
-      minHeight: { xs: 63, md: "unset" },
+const CustomOutlinedButton = ({ children, url }) => {
+  const navigation = useNavigate();
+  return (
+    <Button
+      variant="outlined"
+      onClick={() => {navigation(url)}}
+      sx={{
+        color: "white",
+        borderColor: "white",
+        fontSize: "0.9rem",
+        textTransform: "none",
+        borderRadius: 2,
+        minWidth: { xs: 120, md: "unset" },
+        minHeight: { xs: 63, md: "unset" },
 
-      "&:hover": {
-        backgroundColor: "#3a8050",
-        color: "#F9F8F6",
-        borderColor: "#F9F8F6",
-      },
-    }}
-  >
-    {children}
-  </Button>
-);
+        "&:hover": {
+          backgroundColor: "#3a8050",
+          color: "#F9F8F6",
+          borderColor: "#F9F8F6",
+        },
+      }}
+    >
+      {children}
+    </Button>
+  );
+};
 
 const HomeLoggedUser = () => {
+  const { user, isAuthenticated } = useAuth();
+
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
-      <Box sx={{ m: { xs:0, md:5} }}>
+      <Box sx={{ m: { xs: 0, md: 5 } }}>
         <Container>
           <Typography
             variant="h1"
             sx={{ pt: 4, fontSize: "30px", fontWeight: "bold" }}
           >
             {/* aca va a el nombre de usuario, debe ser dinamico */}
-            ¡Hola, Daniela! 
+            {`¡ Hola, ${user.username} ! `}
+            
           </Typography>
           <Typography variant="h3" sx={{ fontSize: "20px", mt: 2 }}>
             ¿Por donde quieres empezar?
@@ -70,7 +77,7 @@ const HomeLoggedUser = () => {
                       </Typography>
                     </Grid>
                     <Grid item xs={5} sx={{ textAlign: "right", flexGrow: 1 }}>
-                      <CustomOutlinedButton>
+                      <CustomOutlinedButton url="/crear-anuncio">
                         Publica tu anuncio
                       </CustomOutlinedButton>
                     </Grid>
@@ -93,7 +100,7 @@ const HomeLoggedUser = () => {
                       </Typography>
                     </Grid>
                     <Grid item xs={5} sx={{ textAlign: "right", flexGrow: 1 }}>
-                      <CustomOutlinedButton>
+                      <CustomOutlinedButton url="/explora">
                         Explora los anuncios
                       </CustomOutlinedButton>
                     </Grid>
@@ -120,7 +127,6 @@ const HomeLoggedUser = () => {
           <UsersList />
         </Container>
       </Box>
-      <Footer />
     </ThemeProvider>
   );
 };

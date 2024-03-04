@@ -85,7 +85,7 @@ export const login = async (request, response) => {
     // Envío la respuesta al cliente
 
     return response.json({
-      message: "Inicio de sesión correcto",
+      res: tokenData,
       success: true,
     });
   } catch (error) {

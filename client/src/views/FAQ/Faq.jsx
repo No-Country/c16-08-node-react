@@ -1,5 +1,4 @@
 import { ThemeProvider } from "@mui/material";
-import { Footer, Navbar } from "../../components";
 import { Box, createTheme, Typography, Avatar } from "@mui/material";
 import Question from "./Question";
 
@@ -43,8 +42,7 @@ const Faq = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
-      <Box sx={{ backgroundColor: "#E2E1D2", width: "100%", py: 2, mt: 3 }}>
+        <Box sx={{ backgroundColor: "#E2E1D2", width: "100%", py: 2, mt: 3 }}>
         <Typography
           variant="h2"
           fontSize={{ xs: "1.5rem", md: "2rem" }}
@@ -84,7 +82,6 @@ const Faq = () => {
           ))}
         </Box>
       </Box>
-      <Footer />
     </ThemeProvider>
   );
 };

@@ -1,11 +1,9 @@
-import { Navbar, Section, Footer} from "../../components/index.js";
+import { Section} from "../../components/index.js";
 
 const Landing = () => {
   return (
     <div>
-      <Navbar />
       <Section />
-      <Footer />
     </div>
   );
 };
