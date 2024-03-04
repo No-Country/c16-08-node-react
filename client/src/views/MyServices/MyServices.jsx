@@ -1,5 +1,4 @@
 import { Box, ThemeProvider, Typography, createTheme } from "@mui/material";
-import { Footer, Navbar } from "../../components";
 import JobPostings from "./JobPostings";
 import Button from "./ButtonMyServices";
 
@@ -12,7 +11,7 @@ const theme = createTheme({
 const MyServices = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
+      
       <section>
         <Typography
           sx={{
@@ -74,8 +73,7 @@ const MyServices = () => {
         </Typography>
         <JobPostings isOpen="false" />
       </section>
-      <Footer />
-    </ThemeProvider>
+      </ThemeProvider>
   );
 };
 

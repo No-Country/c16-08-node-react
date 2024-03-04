@@ -1,7 +1,9 @@
-import Button from "../Button/Button";
 import classes from "./section.module.css";
+import ButtonTheme from "../Button/Button"
+
 
 export default function Section() {
+
   return (
     <section>
       {/* card 1 */}
@@ -19,7 +21,9 @@ export default function Section() {
               <li>de forma simple y gratuita</li>
             </ul>
 
-            <Button>Empieza ahora</Button>
+            <ButtonTheme url="/register">
+            Empieza ahora
+            </ButtonTheme>
           </div>
         </div>
         <img
@@ -39,14 +43,17 @@ export default function Section() {
           <div className={classes.content}>
             <h2>¿Estás buscando un trabajo extra?</h2>
             <ul>
-              <li>Regístrate en <span className={classes.orangeText}>EmpleosÁgil</span></li>
-              <li>totalmente gratis y busca el trabajo </li>
               <li>
-                que se adapte a tus horarios
+                Regístrate en{" "}
+                <span className={classes.orangeText}>EmpleosÁgil</span>
               </li>
-             
+              <li>totalmente gratis y busca el trabajo </li>
+              <li>que se adapte a tus horarios</li>
             </ul>
-            <Button>Explora</Button>
+           
+            <ButtonTheme url="/explora">
+            Explora
+            </ButtonTheme>
           </div>
         </div>
       </div>
@@ -58,12 +65,13 @@ export default function Section() {
             <ul>
               <li>Conecta con potenciales clientes</li>
               <li>publicando tu anuncio en cuestión</li>
-              <li>
-                de minutos
-              </li>
-             
+              <li>de minutos</li>
             </ul>
-            <Button>Publica un anuncio</Button>
+         
+
+            <ButtonTheme url="/register">
+            Publica un anuncio
+            </ButtonTheme>
           </div>
         </div>
         <img
