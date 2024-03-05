@@ -5,6 +5,7 @@ const Landing = () => {
     <React.Fragment>
       <Section />
     </React.Fragment>
+
   );
 };
 export default Landing;

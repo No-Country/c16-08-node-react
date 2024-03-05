@@ -21,6 +21,7 @@ const CustomOutlinedButton = ({ children, url }) => {
       onClick={() => {
         navigation(url);
       }}
+
       sx={{
         color: "white",
         borderColor: "white",
@@ -54,6 +55,7 @@ const HomeLoggedUser = () => {
           >
             {/* aca va a el nombre de usuario, debe ser dinamico */}
             {`¡ Hola, ${user.username} ! `}
+
           </Typography>
           <Typography variant="h3" sx={{ fontSize: "20px", mt: 2 }}>
             ¿Por donde quieres empezar?
