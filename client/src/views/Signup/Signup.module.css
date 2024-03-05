@@ -68,7 +68,8 @@ margin-left: 5px;
 }
 .goBackLink{
 text-decoration: none;
-color: var(--secondary-color);
+color: #2c6e49;
+font-weight: bold;
 }
 
 

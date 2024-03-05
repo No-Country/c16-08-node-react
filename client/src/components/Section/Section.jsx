@@ -5,7 +5,7 @@ import ButtonTheme from "../Button/Button"
 export default function Section() {
 
   return (
-    <section>
+    <section className={classes.section}>
       {/* card 1 */}
       <div className={classes.quiero_trabajar}>
         <div style={{ flex: 1 }}>

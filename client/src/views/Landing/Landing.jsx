@@ -1,10 +1,11 @@
 import { Section} from "../../components/index.js";
-
+import React from "react";
 const Landing = () => {
   return (
-    <div>
+    <React.Fragment>
       <Section />
-    </div>
+    </React.Fragment>
+
   );
 };
 export default Landing;

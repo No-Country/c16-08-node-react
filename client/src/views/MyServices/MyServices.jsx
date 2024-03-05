@@ -44,7 +44,7 @@ const MyServices = () => {
             añadir fotos de tus trabajos. También podrás ofrecer un trabajo
             temporal (mozo, limpieza, etc).
           </p>
-          <Button>Crea un anuncio</Button>
+          <Button url='/publicar'>Crea un anuncio</Button>
         </Box>
       </section>
       <section>
