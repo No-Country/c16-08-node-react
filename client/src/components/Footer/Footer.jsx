@@ -5,8 +5,7 @@ const Footer = () => {
   const URL =
     "https://res.cloudinary.com/kimeipetshop/image/upload/v1708293666/hjk01mbfaemtfy1uprqn.png";
   return (
-    <footer className= {styles.footerContainer}>
-
+    <footer className={styles.footerContainer}>
       <div className={styles.infoContainer}>
         <img src={URL} alt="logo-footer" className={styles.imgFooter} />
         <ul className={styles.listFooter}>
@@ -27,25 +26,15 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      
+
       <div className={styles.extraContainer}>
         <ul>
-
-        <li>
-       <Link to="/acerca">
-       ¿Quiénes somos?
-       </Link>
-</li>
-<li>
-   <Link to="/Faq">
-    Preguntas frecuentes
-  </Link>
-</li>
-<li>
-  <a href="#" target="_blank" rel="noopener noreferrer">
-    Soporte
-  </a>
-</li>
+          <li>
+            <Link to="/acerca">¿Quiénes somos?</Link>
+          </li>
+          <li>
+            <Link to="/Faq">Preguntas frecuentes</Link>
+          </li>
         </ul>
       </div>
     </footer>
