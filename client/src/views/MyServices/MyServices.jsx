@@ -1,5 +1,4 @@
 import { Box, ThemeProvider, Typography, createTheme } from "@mui/material";
-import { Footer, Navbar } from "../../components";
 import JobPostings from "./JobPostings";
 import Button from "./ButtonMyServices";
 
@@ -12,7 +11,7 @@ const theme = createTheme({
 const MyServices = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
+      
       <section>
         <Typography
           sx={{
@@ -45,7 +44,7 @@ const MyServices = () => {
             añadir fotos de tus trabajos. También podrás ofrecer un trabajo
             temporal (mozo, limpieza, etc).
           </p>
-          <Button>Crea un anuncio</Button>
+          <Button url='/publicar'>Crea un anuncio</Button>
         </Box>
       </section>
       <section>
@@ -74,8 +73,7 @@ const MyServices = () => {
         </Typography>
         <JobPostings isOpen="false" />
       </section>
-      <Footer />
-    </ThemeProvider>
+      </ThemeProvider>
   );
 };
 

@@ -48,8 +48,7 @@ const Explore = () => {
 
   return (
     <>
-      <Navbar />
-      <div className={style.titleContainer}>
+        <div className={style.titleContainer}>
         <h3 className={style.exploreTitle}>
           Explora todas las ofertas laborales y servicios disponibles cerca de
           tu zona
@@ -76,7 +75,6 @@ const Explore = () => {
           ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 };

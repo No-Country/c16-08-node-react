@@ -23,14 +23,13 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { registerSchema } from "../../schemas/auth.js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Toaster } from "react-hot-toast";
+import { Toaster, useToaster } from "react-hot-toast";
 import { MdDataSaverOff } from "react-icons/md";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [allFieldsFilled, setAllFieldsFilled] = useState(false);
-  const { signup, isAuthenticated, loadingButton} = useAuth();
- 
+  const { signup, isAuthenticated, loadingButton } = useAuth();
 
   const {
     register,
@@ -48,8 +47,9 @@ const Signup = () => {
 
   const onSubmit = async (value) => {
     await signup(value);
+    navigate("/login");
   };
-
+ 
   useEffect(() => {
     if (isAuthenticated) navigate("/login");
   }, [isAuthenticated]);
@@ -82,7 +82,6 @@ const Signup = () => {
 
   return (
     <div className={styles.container}>
-     
       <Toaster position="bottom-right" reverseOrder={false} />
       <Box
         component="form"
@@ -220,7 +219,7 @@ const Signup = () => {
             loading={loadingButton}
             loadingPosition="start"
             disabled={validateButton()}
-            startIcon={loadingButton?<MdDataSaverOff />:" "}
+            startIcon={loadingButton ? <MdDataSaverOff /> : " "}
             sx={{
               textTransform: "capitalize",
               bgcolor: "#2c6e49",

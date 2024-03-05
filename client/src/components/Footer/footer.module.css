@@ -4,10 +4,10 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--primary-color);
-  padding: 20px;
-  position: absolute;
-  bottom: 0;
+  padding: 2rem;
+  margin-top: 5rem;
   width: 100%;
+ 
 }
 
 .infoContainer {

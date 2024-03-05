@@ -1,12 +1,10 @@
-import { Navbar, Section, Footer} from "../../components/index.js";
-
+import { Section} from "../../components/index.js";
+import React from "react";
 const Landing = () => {
   return (
-    <div>
-      <Navbar />
+    <React.Fragment>
       <Section />
-      <Footer />
-    </div>
+    </React.Fragment>
   );
 };
 export default Landing;
