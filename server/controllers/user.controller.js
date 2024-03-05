@@ -85,7 +85,7 @@ export const login = async (request, response) => {
     // Envío la respuesta al cliente
 
     return response.json({
-      res: tokenData,
+      user: tokenData,
       success: true,
     });
   } catch (error) {

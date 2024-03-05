@@ -1,8 +1,13 @@
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-const ButtonMyServices = (props) => {
+const ButtonMyServices = ({children, url}) => {
+  const navigation = useNavigate();
+  const handleNavigation = () => {
+    navigation(`${url}`);
+  };
   return (
-    <Button onClick={props.onClick}
+    <Button onClick={handleNavigation}
       sx={{
         p: "10px 15px",
         background: "#f9f8f6",
@@ -16,7 +21,7 @@ const ButtonMyServices = (props) => {
         },
       }}
     >
-      {props.children}
+      {children}
     </Button>
   );
 };

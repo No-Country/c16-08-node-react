@@ -10,27 +10,27 @@ import {
   HomeLoggedUser,
   ProfileForm,
   Faq,
-  MyServices
+  MyServices,
 } from "../src/views/index.js";
 import ProtectedRoute from "./route.jsx";
 import { Navbar, Footer } from "./components/index.js";
 import { useLocation } from "react-router-dom";
 import React from "react";
 
-function Nav() {
+function CondicionalComponets({ componet }) {
   const location = useLocation();
-  return location.pathname === "/register" || location.pathname === "/login" ? (
-    <React.Fragment></React.Fragment>
-  ) : (
-    <Navbar />
-  );
+  const condicional =
+    location.pathname === "/register" || location.pathname === "/login";
+  if (componet === "nav")
+    return condicional ? <React.Fragment></React.Fragment> : <Navbar />;
+  return condicional ? <React.Fragment></React.Fragment> : <Footer />;
 }
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Nav />
+        <CondicionalComponets componet="nav" />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
@@ -46,7 +46,7 @@ function App() {
             <Route path="/perfil" element={<ProfileForm />} />
           </Route>
         </Routes>
-        <Footer />
+        <CondicionalComponets />
       </BrowserRouter>
     </AuthProvider>
   );

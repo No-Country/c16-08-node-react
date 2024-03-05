@@ -23,7 +23,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
+
   const [loadingButton, setLoadingButton] = useState(false);
 
   const signup = async (user) => {
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
       setLoadingButton(true);
       const response = await loginRequest(user);
       toast.success(response.data.message, { id: "successAccess" });
-      setUser(response.data);
+      setUser(response.data.user);
       setIsAuthenticated(true);
     } catch (error) {
       toast.error(error.response.data.message);
@@ -73,20 +73,13 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkLogin = async () => {
       const cookies = Cookies.get();
-      if (!cookies.token) {
-        setIsAuthenticated(false);
-        setLoading(false);
-      }
-
       try {
-        const res = await verifyTokenRequest(cookies.token);
-        if (!res.data) return setIsAuthenticated(false);
+        const response = await verifyTokenRequest(cookies.token);
+        if (!response.data) return setIsAuthenticated(false);
+        setUser(response.data);
         setIsAuthenticated(true);
-        setUser(res.data);
-        setLoading(false);
       } catch (error) {
         setIsAuthenticated(false);
-        setLoading(false);
       }
     };
     checkLogin();
@@ -100,7 +93,6 @@ export const AuthProvider = ({ children }) => {
         signin,
         logout,
         isAuthenticated,
-        loading,
         loadingButton,
       }}
     >

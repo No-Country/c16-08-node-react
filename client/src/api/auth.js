@@ -9,6 +9,4 @@ export const logoutRequest = async () => axios.post("/api/users/logout");
 
 export const verifyTokenRequest = async () => axios.get(`/api/users/verify`);
 
-// export const verifyRequest = async () => axios.post(`/users/verify`);
-
 export const forgotPasswordRequest = async () => axios.get(`/api/users/forgotPassword`);

@@ -18,7 +18,9 @@ const CustomOutlinedButton = ({ children, url }) => {
   return (
     <Button
       variant="outlined"
-      onClick={() => {navigation(url)}}
+      onClick={() => {
+        navigation(url);
+      }}
       sx={{
         color: "white",
         borderColor: "white",
@@ -41,10 +43,8 @@ const CustomOutlinedButton = ({ children, url }) => {
 };
 
 const HomeLoggedUser = () => {
-  const { user, isAuthenticated } = useAuth();
-  console.log(user)
-
-  return (
+  const { user } = useAuth();
+    return (
     <ThemeProvider theme={theme}>
       <Box sx={{ m: { xs: 0, md: 5 } }}>
         <Container>
@@ -54,7 +54,6 @@ const HomeLoggedUser = () => {
           >
             {/* aca va a el nombre de usuario, debe ser dinamico */}
             {`¡ Hola, ${user.username} ! `}
-            
           </Typography>
           <Typography variant="h3" sx={{ fontSize: "20px", mt: 2 }}>
             ¿Por donde quieres empezar?
