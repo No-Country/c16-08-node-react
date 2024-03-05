@@ -42,6 +42,7 @@ const CustomOutlinedButton = ({ children, url }) => {
 
 const HomeLoggedUser = () => {
   const { user, isAuthenticated } = useAuth();
+  console.log(user)
 
   return (
     <ThemeProvider theme={theme}>

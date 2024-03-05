@@ -1,10 +1,19 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { loginRequest, registerRequest, verifyTokenRequest, logoutRequest } from "../api/auth";
+import {
+  loginRequest,
+  registerRequest,
+  verifyTokenRequest,
+  logoutRequest,
+} from "../api/auth";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 
-const AuthContext = createContext();
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
+const AuthContext = createContext();
+// const toastIdVerify =
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) throw new Error("useAuth must be used within a AuthProvider");
@@ -21,10 +30,15 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoadingButton(true);
       const response = await registerRequest(user);
-      toast.success(response.data.message);
+      toast.success(response.data.message, { id: "successMessage" });
+      toast("Verifica tu correo!", {
+        id: "verifyEmail",
+        icon: "📧",
+      });
+      await delay(2500);
+      toast.dismiss("verifyEmail");
       if (response.status === 201) {
         setUser(response.data);
-        setIsAuthenticated(true);
       }
     } catch (error) {
       toast.error(error.response.data.message);
@@ -37,7 +51,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoadingButton(true);
       const response = await loginRequest(user);
-      toast.success(response.data.message);
+      toast.success(response.data.message, { id: "successAccess" });
       setUser(response.data);
       setIsAuthenticated(true);
     } catch (error) {
@@ -49,15 +63,13 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      const response = await logoutRequest()
+      const response = await logoutRequest();
       setUser(null);
       setIsAuthenticated(false);
-  
     } catch (error) {
       toast.error(error.response.data.message);
     }
-    
-  }
+  };
   useEffect(() => {
     const checkLogin = async () => {
       const cookies = Cookies.get();
