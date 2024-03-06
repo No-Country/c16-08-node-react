@@ -32,7 +32,7 @@ export const register = async (request, response) => {
     const savedUser = await newUSer.save();
     // send verification email
 
-    // await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
+     await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
 
     return response.status(201).json({
       message: "Usuario creado correctamente",
